@@ -19,5 +19,43 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+    
+    <style name="myToolbarStyle" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:background">@color/bg_toolbar</item>
+    </style>
 
+    <style name="ToolbarLeftButtonStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:src">@drawable/ic_menu</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="ToolbarRightButtonStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:src">@drawable/ic_help</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="ToolbarTextStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/title</item>
+        <item name="android:text">TITLE</item>
+        <item name="android:typeface">monospace</item>
+    </style>
 </resources>
