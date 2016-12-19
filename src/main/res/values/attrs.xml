@@ -17,6 +17,5 @@
         <attr name="title_visible" format="boolean" />
         <attr name="title_text" format="string" />
         <attr name="bar_background" format="reference|color"/>
-
     </declare-styleable>
 </resources>
