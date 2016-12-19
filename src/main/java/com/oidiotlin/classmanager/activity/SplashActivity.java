@@ -15,7 +15,7 @@ public class SplashActivity extends Activity {
     private Handler mMainHandler = new Handler() {
         public void handleMessage(Message message) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setClass(getApplication(), OverviewActivity.class);
+            intent.setClass(getApplication(), ManagerActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
 

@@ -79,7 +79,9 @@ public class CustomToolBar extends LinearLayout {
 
         if(leftId != -1)    leftBtn.setBackgroundResource(leftId);
         if(rightId != -1)   rightBtn.setBackgroundResource(rightId);
-        if(backgroundId != -1)  bar.setBackgroundColor(getResources().getColor(R.color.bg_toolbar));
+        if(backgroundId != -1)  bar.setBackgroundColor(getResources().getColor(backgroundId));
+
+        title.setText(titleText);
 
         addView(barLayoutView, 0);
     }

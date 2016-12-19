@@ -5,14 +5,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    app:title_text="Manager"
-    tools:context="com.oidiotlin.classmanager.activity.OverviewActivity">
+    app:title_text="@string/title_activity_manager"
+    tools:context="com.oidiotlin.classmanager.activity.ManagerActivity">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </RelativeLayout>
-
+        android:layout_height="wrap_content">
+    </ScrollView>
 </com.oidiotlin.classmanager.view.CustomToolBar>
+
