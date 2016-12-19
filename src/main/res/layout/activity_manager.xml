@@ -10,7 +10,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/bg_manager_activity">
+
+
     </ScrollView>
 </com.oidiotlin.classmanager.view.CustomToolBar>
 
