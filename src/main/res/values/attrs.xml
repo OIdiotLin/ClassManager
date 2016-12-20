@@ -18,4 +18,9 @@
         <attr name="title_text" format="string" />
         <attr name="bar_background" format="reference|color"/>
     </declare-styleable>
+
+    <attr name="rightPadding" format="dimension" />
+    <declare-styleable name="CustomSlider">
+        <attr name="rightPadding"/>
+    </declare-styleable>
 </resources>

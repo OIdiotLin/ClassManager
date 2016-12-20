@@ -12,4 +12,5 @@
     <color name="title">#ffffff</color>
     <color name="bg_splash">#f5ebc0</color>
     <color name="text_splash">#000000</color>
+    <color name="bg_menu">#f9a4a5</color>
 </resources>

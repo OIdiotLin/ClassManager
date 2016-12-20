@@ -8,6 +8,8 @@
     app:title_text="@string/title_activity_manager"
     tools:context="com.oidiotlin.classmanager.activity.ManagerActivity">
 
+    <include layout="@layout/slider_menu" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

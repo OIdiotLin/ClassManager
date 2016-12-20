@@ -58,4 +58,11 @@
         <item name="android:text">TITLE</item>
         <item name="android:typeface">monospace</item>
     </style>
+
+    <style name="MenuContentButtonStyle">
+        <item name="android:layout_width">@dimen/menu_width</item>
+        <item name="android:layout_height">@dimen/menu_width</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:src">@drawable/logo</item>
+    </style>
 </resources>
