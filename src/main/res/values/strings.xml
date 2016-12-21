@@ -3,6 +3,7 @@
 
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_manager">Manager</string>
+    <string name="title_activity_randpick">Rand Pick</string>
     <string name="copyright">Copyright © 2016&#8211;2017 SCUT. All Rights Reserved.</string>
     <string name="help">Please contact with H.D. Lin</string>
 </resources>

@@ -60,9 +60,9 @@
     </style>
 
     <style name="MenuContentButtonStyle">
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_width">@dimen/menu_width</item>
         <item name="android:layout_height">@dimen/menu_width</item>
         <item name="android:background">@color/transparent</item>
-        <item name="android:src">@drawable/logo</item>
     </style>
 </resources>

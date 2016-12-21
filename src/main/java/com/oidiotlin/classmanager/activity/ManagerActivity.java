@@ -20,7 +20,7 @@ public class ManagerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
-        mMenu = (CustomSlider) findViewById(R.id.)
+        mMenu = (CustomSlider) findViewById(R.id.slider_menu);
         menuBtn = (ImageButton) findViewById(R.id.toolbar_left_btn);
         helpBtn = (ImageButton) findViewById(R.id.toolbar_right_btn);
         menuBtn.setOnClickListener(new ButtonListener());
@@ -36,6 +36,7 @@ public class ManagerActivity extends Activity {
                     mMenu.toggle();
                     break;
                 case R.id.toolbar_right_btn:
+                    Log.i("ButtonListener", "onClick: right called");
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.help), Toast.LENGTH_LONG).show();
                     break;

@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.oidiotlin.classmanager.view.CustomToolBar xmlns:android="http://schemas.android.com/apk/res/android"
+<com.oidiotlin.classmanager.view.CustomSlider xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    app:title_text="@string/title_activity_manager"
+    app:rightPadding="70dp"
+    android:scrollbars="none"
     tools:context="com.oidiotlin.classmanager.activity.ManagerActivity">
-
-    <include layout="@layout/slider_menu" />
-
-    <ScrollView
+    <com.oidiotlin.classmanager.view.CustomToolBar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_manager_activity">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:title_text="@string/title_activity_manager">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    </ScrollView>
-</com.oidiotlin.classmanager.view.CustomToolBar>
+            <include layout="@layout/slider_menu" android:id="@+id/slider_menu"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_manager_activity">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg_manager_activity">
+
+                </ScrollView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.oidiotlin.classmanager.view.CustomToolBar>
+</com.oidiotlin.classmanager.view.CustomSlider>
