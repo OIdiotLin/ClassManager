@@ -47,6 +47,9 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
+                /**
+                 * tool buttons listener
+                 */
                 case R.id.toolbar_left_btn:
                     Log.i("ButtonListener", "onClick: menu button called.");
                     drawerLayout.openDrawer(menuLayout);
@@ -54,6 +57,18 @@ public class MainActivity extends FragmentActivity {
                 case R.id.toolbar_right_btn:
                     Log.i("ButtonListener", "onClick: help button called.");
                     Toast.makeText(MainActivity.this, R.string.help, Toast.LENGTH_SHORT).show();
+                    break;
+                /**
+                 * menu buttons listener
+                 */
+                case R.id.menu_button_manager:
+                    Log.i("ButtonListener", "onClick: manager button.");
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    Fragment fragment = new ManagerFragment();
+                    ((TextView)findViewById(R.id.toolbar_title)).setText(R.string.title_fragment_manager);
+                    ft.replace(R.id.frame_content, fragment);
+                    ft.commit();
+                    drawerLayout.closeDrawer(menuLayout);
                     break;
                 default:
                     break;
@@ -67,7 +82,7 @@ public class MainActivity extends FragmentActivity {
     public class DrawerItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Log.i("DrawerItemClickListener", "Click called!!");
+            Log.i("DrawerItemClickListener", "Click called!!" + i);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             Fragment fragment = null;
             switch (i) {
