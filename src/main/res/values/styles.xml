@@ -65,4 +65,11 @@
         <item name="android:layout_height">@dimen/menu_width</item>
         <item name="android:background">@color/transparent</item>
     </style>
+
+    <style name="MenuContentStyle">
+        <item name="android:gravity">left</item>
+        <item name="android:layout_width">@dimen/menu_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scrollbars">none</item>
+    </style>
 </resources>

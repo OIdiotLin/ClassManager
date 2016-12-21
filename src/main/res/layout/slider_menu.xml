@@ -14,13 +14,13 @@
             android:id="@+id/menu_button_manager"
             android:src="@drawable/ic_group"
             android:contentDescription="@string/title_activity_manager"
-            android:background="@color/bg_manager_activity"
+            android:background="@color/bg_manager_fragment"
             style="@style/MenuContentButtonStyle"/>
         <ImageButton
             android:id="@+id/menu_button_randpick"
             android:src="@drawable/ic_randpick"
             android:contentDescription="@string/title_activity_randpick"
-            android:background="@color/bg_randPick_activity"
+            android:background="@color/bg_randPick_fragment"
             style="@style/MenuContentButtonStyle"/>
     </GridLayout>
 </com.oidiotlin.classmanager.view.CustomSlider>

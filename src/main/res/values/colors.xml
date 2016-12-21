@@ -5,11 +5,11 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="black_overlay">#66000000</color>
-    <color name="bg_toolbar">#66CCFF</color>
-    <color name="bg_manager_activity">#66CCFF</color>
-    <color name="bg_randPick_activity">#F7C730</color>
+    <color name="bg_toolbar">#ffffff</color>
+    <color name="bg_manager_fragment">#66CCFF</color>
+    <color name="bg_randPick_fragment">#F7C730</color>
     <color name="transparent">#00000000</color>
-    <color name="title">#ffffff</color>
+    <color name="title">#000000</color>
     <color name="bg_splash">#f5ebc0</color>
     <color name="text_splash">#000000</color>
     <color name="bg_menu">#f9a4a5</color>
