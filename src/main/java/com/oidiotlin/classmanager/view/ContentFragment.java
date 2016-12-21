@@ -18,7 +18,7 @@ public class ContentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_content, null);
+        View view = inflater.inflate(R.layout.fragment_manager, null);
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }
