@@ -7,10 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +20,10 @@ import com.oidiotlin.classmanager.fragment.RandPickFragment;
 public class MainActivity extends FragmentActivity {
     private DrawerLayout drawerLayout;
     private RelativeLayout menuLayout;
+
+    private ImageButton closeButton;
+    private ImageButton managerButton;
+    private ImageButton randPickButton;
     private ImageButton menuButton;
     private ImageButton helpButton;
 
@@ -33,19 +34,27 @@ public class MainActivity extends FragmentActivity {
 
         menuButton = (ImageButton) findViewById(R.id.toolbar_left_btn);
         helpButton = (ImageButton) findViewById(R.id.toolbar_right_btn);
+        closeButton = (ImageButton) findViewById(R.id.menu_button_close);
+        managerButton = (ImageButton) findViewById(R.id.menu_button_manager);
+        randPickButton = (ImageButton) findViewById(R.id.menu_button_randpick);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         menuLayout = (RelativeLayout) findViewById(R.id.menu_layout);
-        ListView listView = (ListView) findViewById(R.id.menu_list_view);
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_2));
+        //ListView listView = (ListView) findViewById(R.id.menu_list_view);
+        //listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1));
 
-        listView.setOnItemClickListener(new DrawerItemClickListener());
+        //listView.setOnItemClickListener(new DrawerItemClickListener());
         menuButton.setOnClickListener(new ToolBarButtonClickListener());
         helpButton.setOnClickListener(new ToolBarButtonClickListener());
+        closeButton.setOnClickListener(new ToolBarButtonClickListener());
+        managerButton.setOnClickListener(new ToolBarButtonClickListener());
+        randPickButton.setOnClickListener(new ToolBarButtonClickListener());
     }
 
     public class ToolBarButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Fragment fragment;
             switch (view.getId()) {
                 /**
                  * tool buttons listener
@@ -61,24 +70,35 @@ public class MainActivity extends FragmentActivity {
                 /**
                  * menu buttons listener
                  */
-                case R.id.menu_button_manager:
-                    Log.i("ButtonListener", "onClick: manager button.");
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    Fragment fragment = new ManagerFragment();
-                    ((TextView)findViewById(R.id.toolbar_title)).setText(R.string.title_fragment_manager);
-                    ft.replace(R.id.frame_content, fragment);
-                    ft.commit();
+                case R.id.menu_button_close:
+                    Log.i("ButtonListener", "onClick: close button.");
                     drawerLayout.closeDrawer(menuLayout);
                     break;
+                case R.id.menu_button_manager:
+                    Log.i("ButtonListener", "onClick: manager button.");
+                    fragment = new ManagerFragment();
+                    switchFragment(fragment, R.string.title_fragment_manager);
+                    break;
+                case R.id.menu_button_randpick:
+                    Log.i("ButtonListener", "onClick: rand pick button.");
+                    fragment = new RandPickFragment();
+                    switchFragment(fragment, R.string.title_fragment_randpick);
                 default:
                     break;
             }
         }
     }
 
+    private void switchFragment (Fragment myFrag, int newTitle) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ((TextView)findViewById(R.id.toolbar_title)).setText(newTitle);
+        ft.replace(R.id.frame_content, myFrag);
+        ft.commit();
+        drawerLayout.closeDrawer(menuLayout);
+    }
     /**
      * Menu 表点击事件
-     */
+     *
     public class DrawerItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -102,6 +122,6 @@ public class MainActivity extends FragmentActivity {
             drawerLayout.closeDrawer(menuLayout);
         }
     }
-
+    */
 
 }
