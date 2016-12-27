@@ -1,6 +1,7 @@
 package com.oidiotlin.classmanager.utils;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 /**
  * Created by OIdiot on 2016/12/17.
@@ -14,5 +15,13 @@ public class DatabaseManager {
             helper = new MySqliteHelper(context);
         }
         return helper;
+    }
+
+    public static void execSQL (SQLiteDatabase db, String sql) {
+        if(db != null) {
+            if(sql != null && !sql.equals("")) {
+                db.execSQL(sql);
+            }
+        }
     }
 }

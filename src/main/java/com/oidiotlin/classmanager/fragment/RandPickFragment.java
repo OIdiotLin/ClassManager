@@ -1,6 +1,6 @@
 package com.oidiotlin.classmanager.fragment;
 
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import com.oidiotlin.classmanager.R;
  * Project: ClassManager
  */
 
-public class RandPickFragment extends Fragment {
+public class RandPickFragment extends ListFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

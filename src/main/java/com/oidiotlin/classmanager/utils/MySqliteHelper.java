@@ -3,6 +3,7 @@ package com.oidiotlin.classmanager.utils;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by OIdiot on 2016/12/17.
@@ -21,7 +22,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
     public MySqliteHelper(Context context) {
-        super(context, Constant.DATABASE_NAME, null, 1);
+        super(context, Constant.DATABASE_NAME, null, Constant.DATABASE_VERSION);
     }
 
     /**
@@ -50,6 +51,12 @@ public class MySqliteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        Log.i("database Helper", "onCreate");
+        //TODO Create new db
+        String sql = "create table "+ Constant.TABLE_NAME+"("+
+                Constant.ID + " Integer primary";
 
     }
+
+
 }
