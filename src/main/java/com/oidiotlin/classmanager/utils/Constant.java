@@ -25,4 +25,7 @@ public class Constant {
     public static final String POSITION = "Position";
     public static final String PARTICIPATION = "Participation";
 
+    public static final String FTP_ADDRESS = "ftp.oidiotlin.com";
+    public static final String FTP_USERNAME = "classmanager@oidiotlin.com";
+    public static final String FTP_PASSWORD = "se164scu";
 }

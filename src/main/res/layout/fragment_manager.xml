@@ -9,6 +9,6 @@
         android:layout_height="wrap_content"
         android:dividerHeight="0dp"
         android:divider="@color/transparent"
-        android:scrollbars="vertical">
+        android:scrollbars="none">
     </ListView>
 </LinearLayout>

@@ -28,7 +28,15 @@
         android:layout_below="@id/splash_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
+    <com.oidiotlin.classmanager.view.OverWatchLoading
+        android:id="@+id/owloading"
+        android:layout_below="@id/splash_text"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
     <TextView
+        android:id="@+id/splash_copyright"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/text_splash"

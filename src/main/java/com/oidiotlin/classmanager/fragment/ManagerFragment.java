@@ -42,18 +42,20 @@ public class ManagerFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] listItem = { "a", "b", "c", "d", "e" };
+        String[] listItem = {
+                "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
+        };
         int[] bgItem = {
-                R.color.bg_nameCard_0,
-                R.color.bg_nameCard_1,
-                R.color.bg_nameCard_2,
-                R.color.bg_nameCard_3,
+                //R.color.bg_nameCard_0,
+                //R.color.bg_nameCard_1,
+                //R.color.bg_nameCard_2,
+                //R.color.bg_nameCard_3,
                 R.color.bg_nameCard_4,
-                R.color.bg_nameCard_5,
-                R.color.bg_nameCard_6,
-                R.color.bg_nameCard_7,
-                R.color.bg_nameCard_8,
-                R.color.bg_nameCard_9,
+                //R.color.bg_nameCard_5,
+                //R.color.bg_nameCard_6,
+                //R.color.bg_nameCard_7,
+                //R.color.bg_nameCard_8,
+                //R.color.bg_nameCard_9,
         };
         adapter = new SimpleAdapter(getActivity(), getData(listItem, bgItem),
                 R.layout.list_view_item, new String[] {"text", "bgcolor"},
@@ -66,10 +68,12 @@ public class ManagerFragment extends ListFragment {
     private List<? extends Map<String, ?>> getData(String[] str, int[] bg) {
         //TODO 导入db到listItem中
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < 5; i++) {
+        int len = str.length;
+        for (int i = 0; i < len; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("text", str[i]);
-            map.put("bgcolor", bg[(int)(i%10)]);
+            //map.put("bgcolor", bg[(int)(i%10)]);
+            map.put("bgcolor", bg[0]);
             list.add(map);
         }
         return list;

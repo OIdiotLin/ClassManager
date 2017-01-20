@@ -8,12 +8,15 @@
         android:id="@+id/list_background"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
         android:src="@color/bg_nameCard_0"/>
     <TextView
         android:id="@+id/list_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="40sp"
+        android:textColor="@color/text_listItem"
         android:text="@string/title_fragment_manager"
         android:background="@color/transparent"
         android:textAlignment="center"/>
