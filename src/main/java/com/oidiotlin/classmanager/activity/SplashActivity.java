@@ -92,11 +92,9 @@ public class SplashActivity extends Activity {
         return false;
     }
 
-    //TODO 异步任务：Splash_Activity中加载数据库
     class myAsyncTask extends AsyncTask<Void, Integer, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
-            //TODO 同步服务器上的 database
             final String TAG = "FTP";
             DatabaseManager dbManager;
             client = new FTPClient();
