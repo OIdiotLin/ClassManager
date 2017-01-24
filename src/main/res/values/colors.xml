@@ -13,16 +13,6 @@
     <color name="bg_splash">#f5ebc0</color>
     <color name="text_splash">#000000</color>
     <color name="bg_menu">#ffffff</color>
-    <color name="text_listItem">#ffffff</color>
-
-    <color name="bg_nameCard_0">#8df6f3</color>
-    <color name="bg_nameCard_1">#ece776</color>
-    <color name="bg_nameCard_2">#b3eefe</color>
-    <color name="bg_nameCard_3">#70ec8e</color>
-    <color name="bg_nameCard_4">#577bc4</color>
-    <color name="bg_nameCard_5">#fdbfb8</color>
-    <color name="bg_nameCard_6">#f9ccfd</color>
-    <color name="bg_nameCard_7">#eba975</color>
-    <color name="bg_nameCard_8">#d274d1</color>
-    <color name="bg_nameCard_9">#f265c1</color>
+    <color name="bg_item">#ffffff</color>
+    <color name="text_listItem">#414141</color>
 </resources>

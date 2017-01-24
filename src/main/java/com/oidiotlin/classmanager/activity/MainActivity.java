@@ -40,10 +40,7 @@ public class MainActivity extends FragmentActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         menuLayout = (RelativeLayout) findViewById(R.id.menu_layout);
-        //ListView listView = (ListView) findViewById(R.id.menu_list_view);
-        //listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1));
 
-        //listView.setOnItemClickListener(new DrawerItemClickListener());
         menuButton.setOnClickListener(new ToolBarButtonClickListener());
         helpButton.setOnClickListener(new ToolBarButtonClickListener());
         closeButton.setOnClickListener(new ToolBarButtonClickListener());
@@ -92,6 +89,11 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * 切换到另一个 Fragment
+     * @param myFrag 目标 Fragment
+     * @param newTitle 切换后的新 Title
+     */
     private void switchFragment (ListFragment myFrag, int newTitle) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ((TextView)findViewById(R.id.toolbar_title)).setText(newTitle);

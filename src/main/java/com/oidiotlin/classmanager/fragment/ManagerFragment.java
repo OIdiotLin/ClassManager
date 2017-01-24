@@ -42,24 +42,15 @@ public class ManagerFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] listItem = {
+        String[] itemName = {
                 "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
         };
-        int[] bgItem = {
-                //R.color.bg_nameCard_0,
-                //R.color.bg_nameCard_1,
-                //R.color.bg_nameCard_2,
-                //R.color.bg_nameCard_3,
-                R.color.bg_nameCard_4,
-                //R.color.bg_nameCard_5,
-                //R.color.bg_nameCard_6,
-                //R.color.bg_nameCard_7,
-                //R.color.bg_nameCard_8,
-                //R.color.bg_nameCard_9,
+        int[] itemGender = {
+                R.drawable.ic_male, R.drawable.ic_female
         };
-        adapter = new SimpleAdapter(getActivity(), getData(listItem, bgItem),
+        adapter = new SimpleAdapter(getActivity(), getData(itemName, itemGender),
                 R.layout.list_view_item, new String[] {"text", "bgcolor"},
-                new int[] {R.id.list_name, R.id.list_background}) ;
+                new int[] {R.id.item_name, R.id.item_gender}) ;
         setListAdapter(adapter);
 
         dbHelper = DatabaseManager.getInstance(this.getActivity());
@@ -73,7 +64,7 @@ public class ManagerFragment extends ListFragment {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("text", str[i]);
             //map.put("bgcolor", bg[(int)(i%10)]);
-            map.put("bgcolor", bg[0]);
+            map.put("bgcolor", bg[1]);
             list.add(map);
         }
         return list;

@@ -9,8 +9,8 @@ import android.os.Environment;
 
 public class Constant {
 
-    public static final String DATABASE_PATH = Environment.getExternalStorageDirectory() + "/" + "ClassManager/";
-
+    public static final String DATABASE_PATH = Environment.getExternalStorageDirectory() + "/ClassManager/";
+    public static final String DATABASE_PATH_ON_SERVER = "./";
     public static final String DATABASE_NAME = "class164.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME = "student";
@@ -27,5 +27,5 @@ public class Constant {
 
     public static final String FTP_ADDRESS = "ftp.oidiotlin.com";
     public static final String FTP_USERNAME = "classmanager@oidiotlin.com";
-    public static final String FTP_PASSWORD = "se164scu";
+    public static final String FTP_PASSWORD = "se164scut";
 }
