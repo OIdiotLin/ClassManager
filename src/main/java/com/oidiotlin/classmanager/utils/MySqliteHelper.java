@@ -51,7 +51,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        Log.i("database Helper", "onCreate");s
+        Log.i("database Helper", "onCreate");
     }
 
 
