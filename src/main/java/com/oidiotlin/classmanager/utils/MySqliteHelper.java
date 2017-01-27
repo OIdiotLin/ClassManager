@@ -52,7 +52,6 @@ public class MySqliteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         Log.i("database Helper", "onCreate");
-        //TODO Create new db
         String sql = "create table "+ Constant.TABLE_NAME+"("+
                 Constant.ID + " Integer primary";
 
