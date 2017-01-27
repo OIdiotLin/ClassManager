@@ -120,6 +120,7 @@ public class SplashActivity extends Activity {
                         Toast.makeText(getApplicationContext(),
                                 R.string.info_download_success,
                                 Toast.LENGTH_SHORT).show();
+                        mMainHandler.sendEmptyMessageDelayed(0,3500);
                     }
                 });
             } catch (Exception e) {
@@ -135,7 +136,6 @@ public class SplashActivity extends Activity {
                 });
                 return null;
             }
-            mMainHandler.sendEmptyMessageDelayed(0,3500);
             return null;
         }
 
