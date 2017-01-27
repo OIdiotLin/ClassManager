@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import java.util.List;
  */
 
 public class ManagerFragment extends ListFragment {
+    public static final String TAG = "ManagerFragment";
     private ListView listView;
     private List<Person> lists;
 
@@ -36,16 +38,10 @@ public class ManagerFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_manager, null);
+        Log.i(TAG, "onCreateView: ");
         listView = (ListView) view.findViewById(android.R.id.list);
-        return view;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         dbHelper = new MySqliteHelper(getActivity());
         lists = new ArrayList<Person>();
-
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         lists.clear();
         Cursor cursor = db.rawQuery("select * from " + Constant.TABLE_NAME, null);
@@ -61,10 +57,20 @@ public class ManagerFragment extends ListFragment {
                 person.setPhoneNumber(cursor.getString(cursor.getColumnIndex(Constant.PHONE_NUMBER)));
                 person.setPosition(cursor.getString(cursor.getColumnIndex(Constant.POSITION)));
                 person.setParticipation(cursor.getInt(cursor.getColumnIndex(Constant.PARTICIPATION)));
+                Log.i(TAG, "onCreateView: Person " + person.getName());
+                lists.add(person);
             }
+            //TODO  对 lists 排序
             listView.setAdapter(new MyAdapter());
         }
         db.close();
+        return view;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         /*
         String[] itemName = {
                 "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
@@ -116,7 +122,6 @@ public class ManagerFragment extends ListFragment {
     }
     /*
     private List<? extends Map<String, ?>> getData(String[] str, int[] bg) {
-        //TODO 导入db到listItem中
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         int len = str.length;
         for (int i = 0; i < len; i++) {
