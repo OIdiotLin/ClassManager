@@ -8,6 +8,7 @@ package com.oidiotlin.classmanager.utils;
 public class Person {
     private String studentNumber;   // 学号
     private String name;    // 姓名
+    private String pinyin;  // 拼音
     private String gender;  // 性别
     private String nativeProvince;  // 籍贯
     private String dormitory;   // 寝室
@@ -15,6 +16,14 @@ public class Person {
     private String phoneNumber; // 手机
     private String position;    // 职务
     private int participation;  // 活动参与度
+
+    public String getPinyin() {
+        return pinyin;
+    }
+
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
+    }
 
     public String getStudentNumber() {
         return studentNumber;
