@@ -19,7 +19,6 @@ import com.oidiotlin.classmanager.utils.Constant;
 import com.oidiotlin.classmanager.utils.MySqliteHelper;
 import com.oidiotlin.classmanager.utils.Person;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -69,9 +68,12 @@ public class ManagerFragment extends ListFragment {
             Collections.sort(lists, new Comparator<Person>() {
                 @Override
                 public int compare(Person o1, Person o2) {
+                    if (o1 == null || o2 == null) {
+                        return 0;
+                    }
                     try{
-                        byte[] bufA = o1.getPinYin().getBytes();
-                        byte[] bufB = o2.getPinYin().getBytes();
+                        byte[] bufA = o1.getPinyin().getBytes();
+                        byte[] bufB = o2.getPinyin().getBytes();
                         int compLength = Math.min(bufA.length, bufB.length);
                         for (int i = 0; i < compLength ; i++) {
                             if (bufA[i] < bufB[i])
@@ -80,7 +82,7 @@ public class ManagerFragment extends ListFragment {
                                 return 1;
                         }
                         return bufA.length - bufB.length;
-                    } catch (UnsupportedEncodingException ex){
+                    } catch (Exception e){
                         return 0;
                     }
                 }
