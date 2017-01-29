@@ -46,11 +46,16 @@ public class ManagerFragment extends ListFragment {
         lists = new ArrayList<Person>();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         lists.clear();
+
+        /**
+         * fill list person with data in database.
+         */
         Cursor cursor = db.rawQuery("select * from " + Constant.TABLE_NAME, null);
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 Person person = new Person();
                 person.setName(cursor.getString(cursor.getColumnIndex(Constant.NAME)));
+                person.setPinyin(cursor.getString(cursor.getColumnIndex(Constant.PINYIN)));
                 person.setGender(cursor.getString(cursor.getColumnIndex(Constant.GENDER)));
                 person.setBirthday(cursor.getString(cursor.getColumnIndex(Constant.BIRTHDAY)));
                 person.setStudentNumber(cursor.getString(cursor.getColumnIndex(Constant.STUDENT_NUMBER)));
@@ -96,21 +101,6 @@ public class ManagerFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*
-        String[] itemName = {
-                "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
-        };
-        int[] itemGender = {
-                R.drawable.ic_male, R.drawable.ic_female
-        };
-        adapter = new SimpleAdapter(getActivity(), getData(itemName, itemGender),
-                R.layout.list_view_item, new String[] {"text", "bgcolor"},
-                new int[] {R.id.item_name, R.id.item_gender}) ;
-        setListAdapter(adapter);
-
-        dbHelper = DatabaseManager.getInstance(this.getActivity());
-        */
     }
 
     public class MyAdapter extends BaseAdapter {
@@ -146,18 +136,4 @@ public class ManagerFragment extends ListFragment {
             return lists.size();
         }
     }
-    /*
-    private List<? extends Map<String, ?>> getData(String[] str, int[] bg) {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        int len = str.length;
-        for (int i = 0; i < len; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("text", str[i]);
-            //map.put("bgcolor", bg[(int)(i%10)]);
-            map.put("bgcolor", bg[1]);
-            list.add(map);
-        }
-        return list;
-    }
-    */
 }

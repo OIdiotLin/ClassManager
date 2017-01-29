@@ -17,6 +17,7 @@ public class Constant {
     public static final String ID = "Id";
     public static final String STUDENT_NUMBER = "StudentNumber";
     public static final String NAME = "Name";
+    public static final String PINYIN = "PinYin";
     public static final String GENDER = "Gender";
     public static final String NATIVE_PROVINCE = "Gender";
     public static final String DORMITORY = "Dormitory";
