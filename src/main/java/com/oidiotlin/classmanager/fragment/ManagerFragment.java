@@ -19,7 +19,10 @@ import com.oidiotlin.classmanager.utils.Constant;
 import com.oidiotlin.classmanager.utils.MySqliteHelper;
 import com.oidiotlin.classmanager.utils.Person;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -60,7 +63,28 @@ public class ManagerFragment extends ListFragment {
                 Log.i(TAG, "onCreateView: Person " + person.getName());
                 lists.add(person);
             }
-            //TODO  对 lists 排序
+            /**
+             * Sort lists by alphabetic spelling of names ( Ascending )
+             */
+            Collections.sort(lists, new Comparator<Person>() {
+                @Override
+                public int compare(Person o1, Person o2) {
+                    try{
+                        byte[] bufA = o1.getPinYin().getBytes();
+                        byte[] bufB = o2.getPinYin().getBytes();
+                        int compLength = Math.min(bufA.length, bufB.length);
+                        for (int i = 0; i < compLength ; i++) {
+                            if (bufA[i] < bufB[i])
+                                return -1;
+                            else if (bufA[i] > bufB[i])
+                                return 1;
+                        }
+                        return bufA.length - bufB.length;
+                    } catch (UnsupportedEncodingException ex){
+                        return 0;
+                    }
+                }
+            });
             listView.setAdapter(new MyAdapter());
         }
         db.close();
