@@ -5,4 +5,6 @@
     <dimen name="menu_width">80dp</dimen>
     <dimen name="menu_button_size">48dp</dimen>
     <dimen name="toolbar_height">50dp</dimen>
+    <dimen name="item_details_icon_size">24dp</dimen>
+    <dimen name="item_details_text_size">16sp</dimen>
 </resources>

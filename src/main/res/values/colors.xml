@@ -15,4 +15,6 @@
     <color name="bg_menu">#ffffff</color>
     <color name="bg_item">#ffffff</color>
     <color name="text_listItem">#414141</color>
+    <color name="list_divider">#bfbfbf</color>
+    <color name="item_details_text">#83716a</color>
 </resources>

@@ -6,6 +6,7 @@
     <string name="title_fragment_randpick">Rand Pick</string>
     <string name="copyright">Copyright © 2016&#8211;2017 SCUT. All Rights Reserved.</string>
     <string name="help">Please contact with H.D. Lin</string>
+    <string name="undefined">Undefined</string>
     <string name="info_offline">需要联网才能运行哦/(ㄒoㄒ)/~~</string>
     <string name="info_connecting_err">登陆服务器失败/(ㄒoㄒ)/~~</string>
     <string name="info_download_success">数据库同步成功/(^_^)/</string>

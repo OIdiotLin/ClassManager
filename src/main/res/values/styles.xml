@@ -74,4 +74,18 @@
         <item name="android:scrollbars">none</item>
         <item name="android:background">@color/bg_menu</item>
     </style>
+
+    <style name="ItemDetailsIconStyle">
+        <item name="android:layout_width">@dimen/item_details_icon_size</item>
+        <item name="android:layout_height">@dimen/item_details_icon_size</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+    <style name="ItemDetailsTextStyle">
+        <item name="android:layout_height">@dimen/item_details_icon_size</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/item_details_text_size</item>
+        <item name="android:text">@string/undefined</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:textColor">@color/item_details_text</item>
+    </style>
 </resources>
