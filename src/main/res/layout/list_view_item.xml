@@ -36,41 +36,43 @@
         android:layout_marginBottom="2dp">
         <RelativeLayout
             android:id="@+id/item_details_1"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/item_phone_number_ic"
-            style="@style/ItemDetailsIconStyle"
-            android:src="@drawable/ic_phone"/>
-        <TextView
-            android:layout_toEndOf="@id/item_phone_number_ic"
-            android:id="@+id/item_phone_number_text"
-            style="@style/ItemDetailsTextStyle"/>
+            <ImageView
+                android:id="@+id/item_participation_ic"
+                style="@style/ItemDetailsIconStyle"
+                android:src="@drawable/ic_score"/>
+            <TextView
+                android:layout_toEndOf="@id/item_participation_ic"
+                android:id="@+id/item_participation_text"
+                style="@style/ItemDetailsTextStyle"/>
 
-        <ImageView
-            android:layout_toEndOf="@id/item_phone_number_text"
-            android:id="@+id/item_dormitory_ic"
-            style="@style/ItemDetailsIconStyle"
-            android:src="@drawable/ic_dormitory"/>
-        <TextView
-            android:layout_toEndOf="@id/item_dormitory_ic"
-            android:id="@+id/item_dormitory_text"
-            style="@style/ItemDetailsTextStyle"/>
+            <ImageView
+                android:layout_toEndOf="@id/item_participation_text"
+                android:id="@+id/item_dormitory_ic"
+                style="@style/ItemDetailsIconStyle"
+                android:src="@drawable/ic_dormitory"/>
+            <TextView
+                android:layout_toEndOf="@id/item_dormitory_ic"
+                android:id="@+id/item_dormitory_text"
+                style="@style/ItemDetailsTextStyle"/>
 
-        <ImageView
-            android:layout_toEndOf="@id/item_dormitory_text"
-            android:id="@+id/item_native_province_ic"
-            style="@style/ItemDetailsIconStyle"
-            android:src="@drawable/ic_home"/>
-        <TextView
-            android:layout_toEndOf="@id/item_native_province_ic"
-            android:id="@+id/item_native_province_text"
-            style="@style/ItemDetailsTextStyle"/>
+            <ImageView
+                android:layout_toEndOf="@id/item_dormitory_text"
+                android:id="@+id/item_native_province_ic"
+                style="@style/ItemDetailsIconStyle"
+                android:src="@drawable/ic_home"/>
+            <TextView
+                android:layout_toEndOf="@id/item_native_province_ic"
+                android:id="@+id/item_native_province_text"
+                style="@style/ItemDetailsTextStyle"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_below="@id/item_details_1"
             android:id="@+id/item_details_2"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -84,16 +86,16 @@
 
             <ImageView
                 android:layout_toEndOf="@id/item_birthday_text"
-                android:id="@+id/item_participation_ic"
+                android:id="@+id/item_phone_number_ic"
                 style="@style/ItemDetailsIconStyle"
-                android:src="@drawable/ic_score"/>
+                android:src="@drawable/ic_phone"/>
             <TextView
-                android:layout_toEndOf="@id/item_participation_ic"
-                android:id="@+id/item_participation_text"
+                android:layout_toEndOf="@id/item_phone_number_ic"
+                android:id="@+id/item_phone_number_text"
                 style="@style/ItemDetailsTextStyle"/>
 
             <ImageView
-                android:layout_toEndOf="@id/item_participation_text"
+                android:layout_toEndOf="@id/item_phone_number_text"
                 android:id="@+id/btn_divider"
                 android:layout_width="1dp"
                 android:layout_height="20dp"
