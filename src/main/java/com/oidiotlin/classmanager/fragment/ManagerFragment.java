@@ -117,12 +117,28 @@ public class ManagerFragment extends ListFragment {
             }else {
                 v = convertView;
             }
+            /**
+             * Access the Views
+             */
             TextView name = (TextView) v.findViewById(R.id.item_name);
             ImageView gender = (ImageView) v.findViewById(R.id.item_gender);
+            TextView phoneNumber = (TextView) v.findViewById(R.id.item_phone_number_text);
+            TextView dormitory = (TextView) v.findViewById(R.id.item_dormitory_text);
+            TextView nativeProvince = (TextView) v.findViewById(R.id.item_native_province_text);
+            TextView birthday = (TextView) v.findViewById(R.id.item_birthday_text);
+            TextView participation = (TextView) v.findViewById(R.id.item_participation_text);
+            /**
+             * Fill the View
+             */
             Person person = lists.get(position);
             name.setText(person.getName());
             gender.setImageResource(person.getGender().equals("M") ?
                     R.drawable.ic_male : R.drawable.ic_female);
+            phoneNumber.setText(person.getPhoneNumber());
+            dormitory.setText(person.getDormitory());
+            nativeProvince.setText(person.getNativeProvince());
+            birthday.setText(person.getBirthday());
+            participation.setText(String.valueOf(person.getParticipation()));
             return v;
         }
 
