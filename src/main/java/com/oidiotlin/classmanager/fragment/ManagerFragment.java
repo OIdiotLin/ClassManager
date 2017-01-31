@@ -1,5 +1,6 @@
 package com.oidiotlin.classmanager.fragment;
 
+import android.animation.ValueAnimator;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,9 +24,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 /**
  * Created by OIdiot on 2016/12/21.
@@ -115,13 +113,33 @@ public class ManagerFragment extends ListFragment {
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        Log.i(TAG, "onListItemClick: " + ((TextView) v.findViewById(R.id.item_name)).getText());
-        View details = v.findViewById(R.id.item_details);
+        final View details = v.findViewById(R.id.item_details);
+        int currentHeight = details.getHeight();
+        ValueAnimator anim;
+        if (currentHeight == Constant.DETAILS_HEIGHT) {
+            anim = ValueAnimator.ofInt(Constant.DETAILS_HEIGHT, 0);
+        }
+        else if (currentHeight == 0) {
+            anim = ValueAnimator.ofInt(0, Constant.DETAILS_HEIGHT);
+        }
+        else return;
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int h = (int) animation.getAnimatedValue();
+                details.getLayoutParams().height = h;
+                details.requestLayout();
+            }
+        });
+        anim.setDuration(Constant.DETAILS_ANIM_DURATION);
+        anim.start();
+        /*
         if(details.getVisibility() == VISIBLE)
             details.setVisibility(GONE);
         else if(details.getVisibility() == GONE)
             details.setVisibility(VISIBLE);
         super.onListItemClick(l, v, position, id);
+        */
     }
 
     public class MyAdapter extends BaseAdapter {

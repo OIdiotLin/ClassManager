@@ -29,4 +29,7 @@ public class Constant {
     public static final String FTP_ADDRESS = "ftp.oidiotlin.com";
     public static final String FTP_USERNAME = "classmanager@oidiotlin.com";
     public static final String FTP_PASSWORD = "se164scut";
+
+    public static final int DETAILS_HEIGHT = 230;
+    public static final int DETAILS_ANIM_DURATION = 650;
 }

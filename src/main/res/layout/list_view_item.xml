@@ -28,8 +28,8 @@
     <RelativeLayout
         android:id="@+id/item_details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_height="0dp"
+        android:visibility="visible"
         android:gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:layout_marginStart="15dp"
@@ -37,9 +37,7 @@
         android:layout_marginBottom="2dp">
         <RelativeLayout
             android:id="@+id/item_details_1"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            style="@style/ItemDetailsSubStyle">
             <ImageView
                 android:id="@+id/item_participation_ic"
                 style="@style/ItemDetailsIconStyle"
@@ -73,9 +71,7 @@
         <RelativeLayout
             android:layout_below="@id/item_details_1"
             android:id="@+id/item_details_2"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            style="@style/ItemDetailsSubStyle">
             <ImageView
                 android:id="@+id/item_birthday_ic"
                 style="@style/ItemDetailsIconStyle"
