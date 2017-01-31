@@ -1,5 +1,7 @@
 package com.oidiotlin.classmanager.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -18,6 +20,7 @@ import com.oidiotlin.classmanager.fragment.RandPickFragment;
 
 
 public class MainActivity extends FragmentActivity {
+    public static final String TAG = "MainActivity";
     private DrawerLayout drawerLayout;
     private RelativeLayout menuLayout;
 
@@ -100,5 +103,21 @@ public class MainActivity extends FragmentActivity {
         ft.replace(R.id.frame_content, myFrag);
         ft.commit();
         drawerLayout.closeDrawer(menuLayout);
+    }
+
+    /**
+     * Show phone number in dial activity after click call button in item details
+     * @param view the button clicked
+     */
+    public void callButtonOnClick(View view) {
+        View parentView = (View) view.getParent();
+        TextView phoneNumberView = (TextView) parentView.findViewById(R.id.item_phone_number_text);
+        String number = (String) phoneNumberView.getText();
+        Log.i(TAG, "callButtonOnClick: " + number);
+    }
+    private void call (String number) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
