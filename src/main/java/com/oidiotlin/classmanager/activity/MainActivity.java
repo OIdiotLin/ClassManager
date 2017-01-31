@@ -114,6 +114,7 @@ public class MainActivity extends FragmentActivity {
         TextView phoneNumberView = (TextView) parentView.findViewById(R.id.item_phone_number_text);
         String number = (String) phoneNumberView.getText();
         Log.i(TAG, "callButtonOnClick: " + number);
+        call(number);
     }
     private void call (String number) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
