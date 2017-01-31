@@ -24,6 +24,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 /**
  * Created by OIdiot on 2016/12/21.
  * Project: ClassManager
@@ -101,6 +104,24 @@ public class ManagerFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    /**
+     * Change the visibility of details by clicking the item
+     * @param l The ListView where the click happened
+     * @param v The view that was clicked within the ListView
+     * @param position The position of the view in the list
+     * @param id The row id of the item that was clicked
+     */
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Log.i(TAG, "onListItemClick: " + ((TextView) v.findViewById(R.id.item_name)).getText());
+        View details = v.findViewById(R.id.item_details);
+        if(details.getVisibility() == VISIBLE)
+            details.setVisibility(GONE);
+        else if(details.getVisibility() == GONE)
+            details.setVisibility(VISIBLE);
+        super.onListItemClick(l, v, position, id);
     }
 
     public class MyAdapter extends BaseAdapter {

@@ -3,7 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_item">
+    android:background="@color/bg_item"
+    android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:id="@+id/item_gender"
@@ -28,7 +29,7 @@
         android:id="@+id/item_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         android:gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:layout_marginStart="15dp"
