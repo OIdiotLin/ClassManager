@@ -85,7 +85,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">@dimen/item_details_text_size</item>
         <item name="android:text">@string/undefined</item>
-        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginEnd">22dp</item>
         <item name="android:textColor">@color/item_details_text</item>
     </style>
 

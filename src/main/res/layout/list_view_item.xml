@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_item"
+    android:background="@drawable/bg_card"
     android:descendantFocusability="blocksDescendants">
 
     <ImageView
@@ -89,7 +89,8 @@
             <TextView
                 android:layout_toEndOf="@id/item_phone_number_ic"
                 android:id="@+id/item_phone_number_text"
-                style="@style/ItemDetailsTextStyle"/>
+                style="@style/ItemDetailsTextStyle"
+                android:layout_marginEnd="5dp"/>
 
             <ImageView
                 android:layout_toEndOf="@id/item_phone_number_text"

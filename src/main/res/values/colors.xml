@@ -6,8 +6,8 @@
 
     <color name="black_overlay">#66000000</color>
     <color name="bg_toolbar">#ffffff</color>
-    <color name="bg_manager_fragment">#66CCFF</color>
-    <color name="bg_randPick_fragment">#F7C730</color>
+    <color name="bg_manager_fragment">#ebf8ff</color>
+    <color name="bg_randPick_fragment">#fff8e3</color>
     <color name="transparent">#00000000</color>
     <color name="title">#000000</color>
     <color name="bg_splash">#f5ebc0</color>
@@ -17,4 +17,5 @@
     <color name="text_listItem">#414141</color>
     <color name="list_divider">#bfbfbf</color>
     <color name="item_details_text">#83716a</color>
+    <color name="shadow1">#7c192429</color>
 </resources>
