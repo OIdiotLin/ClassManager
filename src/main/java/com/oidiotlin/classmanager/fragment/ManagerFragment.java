@@ -170,13 +170,19 @@ public class ManagerFragment extends ListFragment {
              * Fill the View
              */
             Person person = lists.get(position);
-            name.setText(person.getName());
-            gender.setImageResource(person.getGender().equals("M") ?
-                    R.drawable.ic_male : R.drawable.ic_female);
-            phoneNumber.setText(person.getPhoneNumber());
-            dormitory.setText(person.getDormitory());
-            nativeProvince.setText(person.getNativeProvince());
-            birthday.setText(person.getBirthday());
+            if(person.getName() != null)
+                name.setText(person.getName());
+            if(person.getGender() != null)
+                gender.setImageResource(person.getGender().equals("M") ?
+                        R.drawable.ic_male : R.drawable.ic_female);
+            if(person.getPhoneNumber() != null)
+                phoneNumber.setText(person.getPhoneNumber());
+            if(person.getDormitory() != null)
+                dormitory.setText(person.getDormitory());
+            if(person.getNativeProvince() != null)
+                nativeProvince.setText(person.getNativeProvince());
+            if(person.getBirthday() != null)
+                birthday.setText(person.getBirthday().substring(5));    // ignore year
             participation.setText(String.valueOf(person.getParticipation()));
             return v;
         }
