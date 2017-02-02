@@ -113,7 +113,9 @@ public class ManagerFragment extends ListFragment {
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        //final View details = l.getChildAt(position);
         final View details = v.findViewById(R.id.item_details);
+        //Log.i(TAG, "onListItemClick: name = " + ((TextView)((View)details.getParent()).findViewById(R.id.item_name)).getText());
         int currentHeight = details.getHeight();
         ValueAnimator anim;
         if (currentHeight == Constant.DETAILS_HEIGHT) {
@@ -126,8 +128,7 @@ public class ManagerFragment extends ListFragment {
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                int h = (int) animation.getAnimatedValue();
-                details.getLayoutParams().height = h;
+                details.getLayoutParams().height = (int) animation.getAnimatedValue();
                 details.requestLayout();
             }
         });
@@ -140,6 +141,7 @@ public class ManagerFragment extends ListFragment {
             details.setVisibility(VISIBLE);
         super.onListItemClick(l, v, position, id);
         */
+        super.onListItemClick(l, v, position, id);
     }
 
     public class MyAdapter extends BaseAdapter {
