@@ -96,6 +96,7 @@ public class ManagerFragment extends ListFragment {
             listView.setAdapter(new MyAdapter());
         }
         db.close();
+        cursor.close();
         return view;
     }
 
