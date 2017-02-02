@@ -155,7 +155,7 @@ public class ManagerFragment extends ListFragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             View v;
             if (convertView == null) {
-                v = View.inflate(getContext(), R.layout.list_view_item, null);
+                v = View.inflate(getContext(), R.layout.list_view_manager_item, null);
             }else {
                 v = convertView;
             }
