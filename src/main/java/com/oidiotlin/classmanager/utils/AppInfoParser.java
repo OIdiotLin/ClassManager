@@ -29,10 +29,33 @@ public class AppInfoParser implements IAppInfoParser {
                 case XmlPullParser.START_DOCUMENT:
                     appInfoList = new ArrayList<AppInfo>();
                     break;
-                // Event - Tag
+                // Event - Tag's Starting
                 case XmlPullParser.START_TAG:
-                    if (xmlPullParser.getName().equals(Constant.APPINFO_))
+                    if (xmlPullParser.getName().equals(Constant.APPINFO))
+                        info = new AppInfo();
+                    else if (xmlPullParser.getName().equals(Constant.APPINFO_APPVER)) {
+                        eventType = xmlPullParser.next();
+                        info.setAppVer(Integer.parseInt(xmlPullParser.getText()));
+                    } else if (xmlPullParser.getName().equals(Constant.APPINFO_DBVER)) {
+                        eventType = xmlPullParser.next();
+                        info.setDbVer(Integer.parseInt(xmlPullParser.getText()));
+                    }
+                    break;
+                // Event - Tag's Ending.
+                case XmlPullParser.END_TAG:
+                    if (xmlPullParser.getName().equals(Constant.APPINFO)) {
+                        appInfoList.add(info);
+                        info = null;
+                    }
+                    break;
             }
+            eventType = xmlPullParser.next();
         }
+        return appInfoList;
+    }
+
+    @Override
+    public String serialize(List<AppInfo> infos) throws Exception {
+        return null;
     }
 }
