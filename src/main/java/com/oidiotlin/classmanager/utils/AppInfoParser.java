@@ -3,8 +3,11 @@ package com.oidiotlin.classmanager.utils;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+import org.xmlpull.v1.XmlSerializer;
 
 import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +59,32 @@ public class AppInfoParser implements IAppInfoParser {
 
     @Override
     public String serialize(List<AppInfo> infos) throws Exception {
-        return null;
+        StringWriter stringWriter = new StringWriter();
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlSerializer xmlSerializer = factory.newSerializer();
+            xmlSerializer.setOutput(stringWriter);
+
+            xmlSerializer.startDocument("UTF-8", true);
+
+            for (AppInfo info : infos) {
+                xmlSerializer.startTag(null, Constant.APPINFO);
+
+                xmlSerializer.startTag(null, Constant.APPINFO_APPVER);
+                xmlSerializer.text(String.valueOf(info.getAppVer()));
+                xmlSerializer.endTag(null, Constant.APPINFO_APPVER);
+
+                xmlSerializer.startTag(null, Constant.APPINFO_DBVER);
+                xmlSerializer.text(String.valueOf(info.getDbVer()));
+                xmlSerializer.endTag(null, Constant.APPINFO_DBVER);
+
+                xmlSerializer.endTag(null, Constant.APPINFO);
+            }
+
+            xmlSerializer.endDocument();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stringWriter.toString();
     }
 }
