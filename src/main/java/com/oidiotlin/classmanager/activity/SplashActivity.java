@@ -107,8 +107,8 @@ public class SplashActivity extends Activity {
                 for (String x: lst) {
                     Log.i(TAG, "doInBackground: "+x);
                 }
-                downloadFile(client, Constant.DATABASE_PATH, Constant.DATABASE_NAME,
-                        Constant.DATABASE_PATH_ON_SERVER, Constant.DATABASE_NAME);
+                downloadFile(client, Constant.APPINFO_PATH_ON_SERVER, Constant.APPINFO_XML,
+                        Constant.APPINFO_PATH, Constant.APPINFO_XML);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -148,8 +148,8 @@ public class SplashActivity extends Activity {
          * @param remoteName Source Filename on remote server
          */
         private void downloadFile(FTPClient client,
-                                  String localDir, String localName,
-                                  String remoteDir, String remoteName) {
+                                  String remoteDir, String remoteName,
+                                  String localDir, String localName) {
             if (client == null)
                 return;
             if (localDir == null || localName == null || remoteDir == null || remoteName == null)
