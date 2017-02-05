@@ -20,9 +20,8 @@ import android.widget.Toast;
 import com.oidiotlin.classmanager.R;
 import com.oidiotlin.classmanager.utils.Constant;
 import com.oidiotlin.classmanager.utils.DatabaseManager;
+import com.oidiotlin.classmanager.utils.UpdateHelper;
 import com.oidiotlin.classmanager.view.OverWatchLoading;
-
-import java.io.File;
 
 import it.sauronsoftware.ftp4j.FTPClient;
 
@@ -35,6 +34,7 @@ public class SplashActivity extends Activity {
     private OverWatchLoading loadingAnimation;
 
     private FTPClient client;
+    private UpdateHelper updateHelper;
 
     private Handler mMainHandler = new Handler() {
         public void handleMessage(Message message) {
@@ -107,7 +107,7 @@ public class SplashActivity extends Activity {
                 for (String x: lst) {
                     Log.i(TAG, "doInBackground: "+x);
                 }
-                downloadFile(client, Constant.APPINFO_PATH_ON_SERVER, Constant.APPINFO_XML,
+                updateHelper.downloadFile(client, Constant.APPINFO_PATH_ON_SERVER, Constant.APPINFO_XML,
                         Constant.APPINFO_PATH, Constant.APPINFO_XML);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -139,33 +139,5 @@ public class SplashActivity extends Activity {
             super.onProgressUpdate(values);
         }
 
-        /**
-         * Download file from remote FTP-server to local direction.
-         * @param client FTP-Client
-         * @param localDir Target Direction
-         * @param localName Target Filename
-         * @param remoteDir Source Direction on remote server
-         * @param remoteName Source Filename on remote server
-         */
-        private void downloadFile(FTPClient client,
-                                  String remoteDir, String remoteName,
-                                  String localDir, String localName) {
-            if (client == null)
-                return;
-            if (localDir == null || localName == null || remoteDir == null || remoteName == null)
-                return;
-
-            try {
-                File localFolder = new File(localDir);
-                if (!localFolder.exists())
-                    localFolder.mkdirs();
-                File localFile = new File(localDir + localName);
-                if (!localFile.exists())
-                    localFile.createNewFile();
-                client.download(remoteDir + remoteName, localFile);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
