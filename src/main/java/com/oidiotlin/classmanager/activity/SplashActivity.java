@@ -107,13 +107,8 @@ public class SplashActivity extends Activity {
                 for (String x: lst) {
                     Log.i(TAG, "doInBackground: "+x);
                 }
-                File localDir = new File(Constant.DATABASE_PATH);
-                if (!localDir.exists())
-                    localDir.mkdirs();
-                File localFile = new File(Constant.DATABASE_PATH + Constant.DATABASE_NAME);
-                if (!localFile.exists())
-                    localFile.createNewFile();
-                client.download(Constant.DATABASE_PATH_ON_SERVER + Constant.DATABASE_NAME, localFile);
+                downloadFile(client, Constant.DATABASE_PATH, Constant.DATABASE_NAME,
+                        Constant.DATABASE_PATH_ON_SERVER, Constant.DATABASE_NAME);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -142,6 +137,27 @@ public class SplashActivity extends Activity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
+        }
+
+        private void downloadFile(FTPClient client,
+                                  String localDir, String localName,
+                                  String remoteDir, String remoteName) {
+            if (client == null)
+                return;
+            if (localDir == null || localName == null || remoteDir == null || remoteName == null)
+                return;
+
+            try {
+                File localFolder = new File(localDir);
+                if (!localFolder.exists())
+                    localFolder.mkdirs();
+                File localFile = new File(localDir + localName);
+                if (!localFile.exists())
+                    localFile.createNewFile();
+                client.download(remoteDir + remoteName, localFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
