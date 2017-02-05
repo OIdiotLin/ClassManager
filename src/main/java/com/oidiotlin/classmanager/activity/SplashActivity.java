@@ -139,6 +139,14 @@ public class SplashActivity extends Activity {
             super.onProgressUpdate(values);
         }
 
+        /**
+         * Download file from remote FTP-server to local direction.
+         * @param client FTP-Client
+         * @param localDir Target Direction
+         * @param localName Target Filename
+         * @param remoteDir Source Direction on remote server
+         * @param remoteName Source Filename on remote server
+         */
         private void downloadFile(FTPClient client,
                                   String localDir, String localName,
                                   String remoteDir, String remoteName) {
