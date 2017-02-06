@@ -2,6 +2,7 @@ package com.oidiotlin.classmanager.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
+import android.os.AsyncTask;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,7 +42,7 @@ public class UpdateHelper {
 
             if (localInfo.getAppVer() < remoteInfo.getAppVer()) {
                 // TODO UI
-                AppUpdate();
+                new AppUpdate().execute();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,7 +50,7 @@ public class UpdateHelper {
     }
 
     // TODO
-    private void AppUpdate () {
+    public class AppUpdate extends AsyncTask<Void, Integer, Void> {
 
     }
 
