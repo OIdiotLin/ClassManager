@@ -1,4 +1,4 @@
-package com.oidiotlin.classmanager.utils;
+package com.oidiotlin.classmanager.utils.system;
 
 import android.app.Activity;
 import android.content.Context;

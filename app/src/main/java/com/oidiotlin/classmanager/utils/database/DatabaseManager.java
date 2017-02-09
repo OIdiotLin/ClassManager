@@ -1,4 +1,4 @@
-package com.oidiotlin.classmanager.utils;
+package com.oidiotlin.classmanager.utils.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

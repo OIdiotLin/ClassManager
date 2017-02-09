@@ -1,9 +1,11 @@
-package com.oidiotlin.classmanager.utils;
+package com.oidiotlin.classmanager.utils.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.oidiotlin.classmanager.utils.system.Constant;
 
 /**
  * Created by OIdiot on 2016/12/17.

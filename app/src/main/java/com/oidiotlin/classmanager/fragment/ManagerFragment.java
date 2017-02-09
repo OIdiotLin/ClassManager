@@ -16,9 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.Constant;
-import com.oidiotlin.classmanager.utils.MySqliteHelper;
-import com.oidiotlin.classmanager.utils.Person;
+import com.oidiotlin.classmanager.utils.system.Constant;
+import com.oidiotlin.classmanager.utils.database.MySqliteHelper;
+import com.oidiotlin.classmanager.utils.database.Person;
 
 import java.util.ArrayList;
 import java.util.Collections;

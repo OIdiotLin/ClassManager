@@ -1,4 +1,4 @@
-package com.oidiotlin.classmanager.utils;
+package com.oidiotlin.classmanager.utils.network;
 
 /**
  * Created by OIdiot on 2017/2/5.

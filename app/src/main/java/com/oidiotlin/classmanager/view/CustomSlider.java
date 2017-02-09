@@ -10,7 +10,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.ScreenUtils;
+import com.oidiotlin.classmanager.utils.system.ScreenUtils;
 
 /**
  * Created by OIdiot on 2016/12/19.

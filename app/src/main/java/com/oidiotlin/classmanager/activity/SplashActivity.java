@@ -1,10 +1,7 @@
 package com.oidiotlin.classmanager.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,12 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.Constant;
-import com.oidiotlin.classmanager.utils.DatabaseManager;
-import com.oidiotlin.classmanager.utils.UpdateHelper;
+import com.oidiotlin.classmanager.utils.database.DatabaseManager;
+import com.oidiotlin.classmanager.utils.network.FTPHelper;
+import com.oidiotlin.classmanager.utils.system.Constant;
 import com.oidiotlin.classmanager.view.OverWatchLoading;
 
 import it.sauronsoftware.ftp4j.FTPClient;
+
+import static com.oidiotlin.classmanager.utils.system.AppUtils.isOnline;
 
 
 public class SplashActivity extends Activity {
@@ -34,7 +33,6 @@ public class SplashActivity extends Activity {
     private OverWatchLoading loadingAnimation;
 
     private FTPClient client;
-    private UpdateHelper updateHelper;
 
     private Handler mMainHandler = new Handler() {
         public void handleMessage(Message message) {
@@ -79,18 +77,6 @@ public class SplashActivity extends Activity {
 
     }
 
-    private static boolean isOnline(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager != null) {
-            NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-            if(info != null && info.isConnected()){
-                if(info.getState() == NetworkInfo.State.CONNECTED)
-                    return true;
-            }
-        }
-        return false;
-    }
 
     class myAsyncTask extends AsyncTask<Void, Integer, Void> {
         @Override
@@ -107,7 +93,7 @@ public class SplashActivity extends Activity {
                 for (String x: lst) {
                     Log.i(TAG, "doInBackground: "+x);
                 }
-                updateHelper.downloadFile(client, Constant.APPINFO_PATH_ON_SERVER, Constant.APPINFO_XML,
+                FTPHelper.downloadFile(Constant.APPINFO_PATH_ON_SERVER, Constant.APPINFO_XML,
                         Constant.APPINFO_PATH, Constant.APPINFO_XML);
                 runOnUiThread(new Runnable() {
                     @Override

@@ -1,6 +1,8 @@
-package com.oidiotlin.classmanager.utils;
+package com.oidiotlin.classmanager.utils.network;
 
 import android.util.Xml;
+
+import com.oidiotlin.classmanager.utils.system.Constant;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;

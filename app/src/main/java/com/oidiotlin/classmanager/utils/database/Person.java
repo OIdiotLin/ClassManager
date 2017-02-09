@@ -1,4 +1,4 @@
-package com.oidiotlin.classmanager.utils;
+package com.oidiotlin.classmanager.utils.database;
 
 /**
  * Created by OIdiot on 2017/1/24.
