@@ -18,7 +18,6 @@ import com.oidiotlin.classmanager.R;
 import com.oidiotlin.classmanager.utils.database.DatabaseManager;
 import com.oidiotlin.classmanager.utils.network.FTPHelper;
 import com.oidiotlin.classmanager.utils.system.Constant;
-import com.oidiotlin.classmanager.view.OverWatchLoading;
 
 import it.sauronsoftware.ftp4j.FTPClient;
 
@@ -30,7 +29,6 @@ public class SplashActivity extends Activity {
     private ImageView logo;
     private ImageView text;
     private TextView copyright;
-    private OverWatchLoading loadingAnimation;
 
     private FTPClient client;
 
@@ -62,7 +60,6 @@ public class SplashActivity extends Activity {
         logo = (ImageView) findViewById(R.id.splash_logo);
         text = (ImageView) findViewById(R.id.splash_text);
         copyright = (TextView) findViewById(R.id.splash_copyright);
-        loadingAnimation = (OverWatchLoading) findViewById(R.id.owloading);
 
         final AlphaAnimation alphaAnimation = new AlphaAnimation(0, 1);
         alphaAnimation.setDuration(3000);   // 渐变动画持续时间
@@ -73,7 +70,6 @@ public class SplashActivity extends Activity {
         logo.setAnimation(alphaAnimation);
         text.setAnimation(alphaAnimation);
         copyright.setAnimation(alphaAnimation);
-        //loadingAnimation.startAnim();
 
     }
 
