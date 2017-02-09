@@ -18,7 +18,7 @@ class Response {
 		);
 		echo json_encode($result);
 	}
-	
+
 	/**
 	 * 以 json 格式封装通信方法并输出
 	 * @param	integer	$code	状态码
@@ -34,7 +34,7 @@ class Response {
 			'message' => $message,
 			'data' => $data
 		);
-		
+	
 		header("Content-Type:text/xml");	// 指定页面显示类型
 		$xml = "<?xml version='1.0' encoding='UTF-8'?>\n";
 		$xml .= "<root>\n";
@@ -42,7 +42,7 @@ class Response {
 		$xml .= "</root>\n";
 		echo $xml;
 	}
-	
+
 	private static function xmlEncode($data) {
 		$xml = $attr = "";
 		foreach ($data as $key => $value) {
@@ -57,7 +57,7 @@ class Response {
 		}
 		return $xml;
 	}
-	
+
 	/**
 	 * 以 json/xml 格式封装通信方法并输出
 	 * @param	integer	$code	状态码
