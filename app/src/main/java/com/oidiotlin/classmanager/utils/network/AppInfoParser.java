@@ -48,7 +48,10 @@ public class AppInfoParser implements IAppInfoParser {
                         } else if (xmlPullParser.getName().equals(APPINFO_VERSION_NAME)) {
                             eventType = xmlPullParser.next();
                             info.setVersionName(xmlPullParser.getText());
-                        } else if (xmlPullParser.getName().equals(APPINFO_NEW_FEATURES))
+                        } else if (xmlPullParser.getName().equals(APPINFO_NEW_FEATURES)) {
+                            eventType = xmlPullParser.next();
+                            info.setNewFeatures(xmlPullParser.getText());
+                        }
                         break;
                     // Event - Tag's Ending.
                     case XmlPullParser.END_TAG:
