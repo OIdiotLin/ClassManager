@@ -24,7 +24,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
     public MySqliteHelper(Context context) {
-        super(context, Constant.DATABASE_PATH + Constant.DATABASE_NAME, null, Constant.DATABASE_VERSION);
+        super(context, Constant.APP_FILE_PATH + Constant.DATABASE_NAME, null, Constant.DATABASE_VERSION);
     }
 
     /**
