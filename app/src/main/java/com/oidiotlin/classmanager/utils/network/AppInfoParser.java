@@ -2,8 +2,6 @@ package com.oidiotlin.classmanager.utils.network;
 
 import android.util.Xml;
 
-import com.oidiotlin.classmanager.utils.system.Constant;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
@@ -12,6 +10,11 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO;
+import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_NEW_FEATURES;
+import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_VERSION_CODE;
+import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_VERSION_NAME;
 
 /**
  * Created by OIdiot on 2017/2/5.
@@ -33,23 +36,23 @@ public class AppInfoParser implements IAppInfoParser {
                 switch (eventType) {
                     // Event - Document's Starting.
                     case XmlPullParser.START_DOCUMENT:
-                        appInfoList = new ArrayList<AppInfo>();
+                        appInfoList = new ArrayList<>();
                         break;
                     // Event - Tag's Starting
                     case XmlPullParser.START_TAG:
-                        if (xmlPullParser.getName().equals(Constant.APPINFO))
+                        if (xmlPullParser.getName().equals(APPINFO))
                             info = new AppInfo();
-                        else if (xmlPullParser.getName().equals(Constant.APPINFO_APPVER)) {
+                        else if (xmlPullParser.getName().equals(APPINFO_VERSION_CODE)) {
                             eventType = xmlPullParser.next();
-                            info.setAppVer(Integer.parseInt(xmlPullParser.getText()));
-                        } else if (xmlPullParser.getName().equals(Constant.APPINFO_DBVER)) {
+                            info.setVersionCode(Integer.parseInt(xmlPullParser.getText()));
+                        } else if (xmlPullParser.getName().equals(APPINFO_VERSION_NAME)) {
                             eventType = xmlPullParser.next();
-                            info.setDbVer(Integer.parseInt(xmlPullParser.getText()));
-                        }
+                            info.setVersionName(xmlPullParser.getText());
+                        } else if (xmlPullParser.getName().equals(APPINFO_NEW_FEATURES))
                         break;
                     // Event - Tag's Ending.
                     case XmlPullParser.END_TAG:
-                        if (xmlPullParser.getName().equals(Constant.APPINFO)) {
+                        if (xmlPullParser.getName().equals(APPINFO)) {
                             appInfoList.add(info);
                             info = null;
                         }
@@ -74,17 +77,21 @@ public class AppInfoParser implements IAppInfoParser {
             xmlSerializer.startDocument("UTF-8", true);
 
             for (AppInfo info : infos) {
-                xmlSerializer.startTag(null, Constant.APPINFO);
+                xmlSerializer.startTag(null, APPINFO);
 
-                xmlSerializer.startTag(null, Constant.APPINFO_APPVER);
-                xmlSerializer.text(String.valueOf(info.getAppVer()));
-                xmlSerializer.endTag(null, Constant.APPINFO_APPVER);
+                xmlSerializer.startTag(null, APPINFO_VERSION_CODE);
+                xmlSerializer.text(String.valueOf(info.getVersionCode()));
+                xmlSerializer.endTag(null, APPINFO_VERSION_CODE);
 
-                xmlSerializer.startTag(null, Constant.APPINFO_DBVER);
-                xmlSerializer.text(String.valueOf(info.getDbVer()));
-                xmlSerializer.endTag(null, Constant.APPINFO_DBVER);
+                xmlSerializer.startTag(null, APPINFO_VERSION_NAME);
+                xmlSerializer.text(String.valueOf(info.getVersionName()));
+                xmlSerializer.endTag(null, APPINFO_VERSION_NAME);
 
-                xmlSerializer.endTag(null, Constant.APPINFO);
+                xmlSerializer.startTag(null, APPINFO_NEW_FEATURES);
+                xmlSerializer.text(String.valueOf(info.getNewFeatures()));
+                xmlSerializer.endTag(null, APPINFO_NEW_FEATURES);
+
+                xmlSerializer.endTag(null, APPINFO);
             }
 
             xmlSerializer.endDocument();

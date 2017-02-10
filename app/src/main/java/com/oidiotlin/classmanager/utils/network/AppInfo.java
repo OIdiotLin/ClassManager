@@ -6,28 +6,37 @@ package com.oidiotlin.classmanager.utils.network;
  */
 
 public class AppInfo {
-    private int appVer;
-    private int dbVer;
+    private int versionCode;
+    private String versionName;
+    private String newFeatures;
 
-    public int getAppVer() {
-        return appVer;
+    public String getNewFeatures() {
+        return newFeatures;
     }
 
-    public void setAppVer(int appVer) {
-        this.appVer = appVer;
+    public void setNewFeatures(String newFeatures) {
+        this.newFeatures = newFeatures;
     }
 
-    public int getDbVer() {
-        return dbVer;
+    public int getVersionCode() {
+        return versionCode;
     }
 
-    public void setDbVer(int dbVer) {
-        this.dbVer = dbVer;
+    public void setVersionCode(int versionCode) {
+        this.versionCode = versionCode;
+    }
+
+    public String getVersionName() {
+        return versionName;
+    }
+
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
     }
 
     @Override
     public String toString() {
-        return "Application Information: app version - " + appVer
-                + " database version - " + dbVer;
+        return "Application Information: versionCode - " + versionCode
+                + " versionName - " + versionName;
     }
 }
