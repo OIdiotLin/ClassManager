@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
 
 /**
  * Created by OIdiot on 2017/2/9.
@@ -44,5 +45,9 @@ public class AppUtils {
             }
         }
         return false;
+    }
+
+    public static boolean isSdCardOK() {
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 }
