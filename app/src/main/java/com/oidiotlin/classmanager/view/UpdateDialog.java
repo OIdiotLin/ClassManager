@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ import com.oidiotlin.classmanager.utils.network.UpdateAppTask;
  */
 
 public class UpdateDialog extends AlertDialog.Builder {
-    public UpdateDialog(final Context context, AppInfo info) {
+    public UpdateDialog(final Context context, final Handler handler, AppInfo info) {
         super(context);
         final View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_update, null);
         this.setIcon(R.drawable.ic_speaker);
@@ -36,7 +37,8 @@ public class UpdateDialog extends AlertDialog.Builder {
                         // TODO Download new APK and install
                         Toast.makeText(context,
                                 R.string.update_start_hint, Toast.LENGTH_SHORT).show();
-                        new UpdateAppTask(context).run();
+                        new UpdateAppTask(context, handler).run();
+                        // TODO fix handler problem
                     }
                 });
         this.setNegativeButton(R.string.update_no,
