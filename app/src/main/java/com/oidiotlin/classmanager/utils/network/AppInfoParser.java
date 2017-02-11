@@ -15,6 +15,7 @@ import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO;
 import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_NEW_FEATURES;
 import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_VERSION_CODE;
 import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_VERSION_NAME;
+import static com.oidiotlin.classmanager.utils.system.Constant.XML_ROOT;
 
 /**
  * Created by OIdiot on 2017/2/5.
@@ -40,7 +41,7 @@ public class AppInfoParser implements IAppInfoParser {
                         break;
                     // Event - Tag's Starting
                     case XmlPullParser.START_TAG:
-                        if (xmlPullParser.getName().equals(APPINFO))
+                        if (xmlPullParser.getName().equals(XML_ROOT))
                             info = new AppInfo();
                         else if (xmlPullParser.getName().equals(APPINFO_VERSION_CODE)) {
                             eventType = xmlPullParser.next();
