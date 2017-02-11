@@ -56,7 +56,7 @@ public class AppInfoParser implements IAppInfoParser {
                         break;
                     // Event - Tag's Ending.
                     case XmlPullParser.END_TAG:
-                        if (xmlPullParser.getName().equals(APPINFO)) {
+                        if (xmlPullParser.getName().equals(XML_ROOT)) {
                             appInfoList.add(info);
                             info = null;
                         }
