@@ -11,7 +11,6 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO;
 import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_NEW_FEATURES;
 import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_VERSION_CODE;
 import static com.oidiotlin.classmanager.utils.system.Constant.APPINFO_VERSION_NAME;
@@ -81,7 +80,7 @@ public class AppInfoParser implements IAppInfoParser {
             xmlSerializer.startDocument("UTF-8", true);
 
             for (AppInfo info : infos) {
-                xmlSerializer.startTag(null, APPINFO);
+                xmlSerializer.startTag(null, XML_ROOT);
 
                 xmlSerializer.startTag(null, APPINFO_VERSION_CODE);
                 xmlSerializer.text(String.valueOf(info.getVersionCode()));
@@ -95,7 +94,7 @@ public class AppInfoParser implements IAppInfoParser {
                 xmlSerializer.text(String.valueOf(info.getNewFeatures()));
                 xmlSerializer.endTag(null, APPINFO_NEW_FEATURES);
 
-                xmlSerializer.endTag(null, APPINFO);
+                xmlSerializer.endTag(null, XML_ROOT);
             }
 
             xmlSerializer.endDocument();
