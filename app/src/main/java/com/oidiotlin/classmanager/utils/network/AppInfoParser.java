@@ -79,9 +79,8 @@ public class AppInfoParser implements IAppInfoParser {
 
             xmlSerializer.startDocument("UTF-8", true);
 
+            xmlSerializer.startTag(null, XML_ROOT);
             for (AppInfo info : infos) {
-                xmlSerializer.startTag(null, XML_ROOT);
-
                 xmlSerializer.startTag(null, APPINFO_VERSION_CODE);
                 xmlSerializer.text(String.valueOf(info.getVersionCode()));
                 xmlSerializer.endTag(null, APPINFO_VERSION_CODE);
@@ -93,9 +92,8 @@ public class AppInfoParser implements IAppInfoParser {
                 xmlSerializer.startTag(null, APPINFO_NEW_FEATURES);
                 xmlSerializer.text(String.valueOf(info.getNewFeatures()));
                 xmlSerializer.endTag(null, APPINFO_NEW_FEATURES);
-
-                xmlSerializer.endTag(null, XML_ROOT);
             }
+            xmlSerializer.endTag(null, XML_ROOT);
 
             xmlSerializer.endDocument();
         } catch (Exception e) {
