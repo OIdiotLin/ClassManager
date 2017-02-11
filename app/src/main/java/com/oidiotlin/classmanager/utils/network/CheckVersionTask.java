@@ -52,11 +52,13 @@ public class CheckVersionTask implements Runnable {
                 Message msg = new Message();
                 msg.what = UPDATE_CLIENT;
                 msg.arg1 = FORCED_UPDATE;
+                msg.obj = remoteInfo;
                 handler.sendMessage(msg);
             } else if (remoteVersion > localVersion) {      // Choose to update or not
                 Message msg = new Message();
                 msg.what = UPDATE_CLIENT;
                 msg.arg1 = OPTIONAL_UPDATE;
+                msg.obj = remoteInfo;
                 handler.sendMessage(msg);
             } else {
                 Message msg = new Message();
