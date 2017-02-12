@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static com.oidiotlin.classmanager.utils.system.AppUtils.getVersionCode;
-import static com.oidiotlin.classmanager.utils.system.Constant.API_CHECKUPDATE;
+import static com.oidiotlin.classmanager.utils.system.Constant.API_CHECK_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.FORCED_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.NO_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.OPTIONAL_UPDATE;
@@ -38,7 +38,7 @@ public class CheckVersionTask implements Runnable {
     @Override
     public void run() {
         try {
-            URL url = new URL(SERVER_API + API_CHECKUPDATE);
+            URL url = new URL(SERVER_API + API_CHECK_UPDATE);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setConnectTimeout(SERVER_RESPONSE_TIMEOUT);
             InputStream inputStream = connection.getInputStream();
