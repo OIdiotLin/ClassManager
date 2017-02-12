@@ -2,11 +2,9 @@ package com.oidiotlin.classmanager.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -15,13 +13,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.database.DatabaseManager;
-import com.oidiotlin.classmanager.utils.network.FTPHelper;
-import com.oidiotlin.classmanager.utils.system.Constant;
+import com.oidiotlin.classmanager.utils.network.AppInfo;
+import com.oidiotlin.classmanager.utils.network.CheckVersionTask;
+import com.oidiotlin.classmanager.utils.network.UpdateAppTask;
+import com.oidiotlin.classmanager.view.UpdateDialog;
 
 import it.sauronsoftware.ftp4j.FTPClient;
 
 import static com.oidiotlin.classmanager.utils.system.AppUtils.isOnline;
+import static com.oidiotlin.classmanager.utils.system.Constant.FORCED_UPDATE;
+import static com.oidiotlin.classmanager.utils.system.Constant.NO_UPDATE;
+import static com.oidiotlin.classmanager.utils.system.Constant.OPTIONAL_UPDATE;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_CLIENT;
 
 
 public class SplashActivity extends Activity {
@@ -65,7 +68,7 @@ public class SplashActivity extends Activity {
         alphaAnimation.setDuration(3000);   // 渐变动画持续时间
         alphaAnimation.setStartOffset(800);    // 渐变动画延时
 
-        new myAsyncTask().execute();
+        new CheckVersionTask(this, handler).run();
 
         logo.setAnimation(alphaAnimation);
         text.setAnimation(alphaAnimation);
@@ -73,53 +76,28 @@ public class SplashActivity extends Activity {
 
     }
 
-
-    class myAsyncTask extends AsyncTask<Void, Integer, Void> {
+    /**
+     * 处理子线程中返回的 msg
+     */
+    Handler handler = new Handler() {
         @Override
-        protected Void doInBackground(Void... voids) {
-            final String TAG = "FTP";
-            DatabaseManager dbManager;
-            client = new FTPClient();
-            try{
-                client.connect(Constant.FTP_ADDRESS);
-                client.login(Constant.FTP_USERNAME, Constant.FTP_PASSWORD);
-                Log.i(TAG, "doInBackground: connecting");
-                Log.i(TAG, "doInBackground: dir:");
-                String[] lst = client.listNames();
-                for (String x: lst) {
-                    Log.i(TAG, "doInBackground: "+x);
-                }
-                FTPHelper.downloadFile(Constant.APPINFO_PATH_ON_SERVER, Constant.APPINFO_XML,
-                        Constant.APPINFO_PATH, Constant.APPINFO_XML);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(),
-                                R.string.info_download_success,
-                                Toast.LENGTH_SHORT).show();
-                        mMainHandler.sendEmptyMessageDelayed(0,3500);
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) { // 筛选线程
+                case UPDATE_CLIENT: // 线程 - 检查更新
+                    switch (msg.arg1) {
+                        case OPTIONAL_UPDATE:   // 可选的更新
+                            new UpdateDialog(SplashActivity.this, handler, (AppInfo)msg.obj).show();
+                            break;
+                        case FORCED_UPDATE:     // 强制更新
+                            new UpdateAppTask(SplashActivity.this, handler).run();
+                            break;
+                        case NO_UPDATE:         // 无需更新
+                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            break;
                     }
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(),
-                                R.string.info_connecting_err,
-                                Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                });
-                return null;
             }
-            return null;
         }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-        }
-
-    }
+    };
 }
