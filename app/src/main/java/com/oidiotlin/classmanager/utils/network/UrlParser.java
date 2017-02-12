@@ -55,7 +55,6 @@ public class UrlParser implements IUrlParser {
 
     @Override
     public String serialize(List<URL> urls) throws Exception {
-        // TODO Implement serialize method
         StringWriter stringWriter = new StringWriter();
         try {
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
