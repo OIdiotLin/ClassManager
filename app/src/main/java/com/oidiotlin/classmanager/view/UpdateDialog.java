@@ -34,17 +34,22 @@ public class UpdateDialog extends AlertDialog.Builder {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Download new APK and install
                         Toast.makeText(context,
                                 R.string.update_start_hint, Toast.LENGTH_SHORT).show();
+                        /**
+                         * 开始下载并安装 apk
+                         */
                         new UpdateAppTask(context, handler).run();
-                        // TODO fix handler problem
                     }
                 });
         this.setNegativeButton(R.string.update_no,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        /**
+                         * 拒绝更新则直接进入
+                         * @see MainActivity
+                         */
                         Intent intent = new Intent(context, MainActivity.class);
                         context.startActivity(intent);
                     }
