@@ -2,6 +2,8 @@ package com.oidiotlin.classmanager.utils.network;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 
@@ -88,6 +90,8 @@ public class UpdateAppTask implements Runnable {
     }
 
     private void installApk(File file) {
-        // TODO implement install apk
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromFile(file));
+        intent.setType("application/vnd.android.package-archive");
+        context.startActivity(intent);
     }
 }
