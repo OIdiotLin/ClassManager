@@ -86,15 +86,29 @@ public class SplashActivity extends Activity {
             switch (msg.what) { // 筛选线程
                 case UPDATE_CLIENT: // 线程 - 检查更新
                     switch (msg.arg1) {
+                        /**
+                         * 存在新版本，提示用户是否选择更新
+                         */
                         case OPTIONAL_UPDATE:   // 可选的更新
                             new UpdateDialog(SplashActivity.this, handler, (AppInfo)msg.obj).show();
                             break;
-                        case FORCED_UPDATE:     // 强制更新
+                        /**
+                         * 版本差异过大，强制更新，直接开始下载进程
+                         * @see UpdateAppTask
+                         */
+                        case FORCED_UPDATE:
+                            Toast.makeText(SplashActivity.this,
+                                    R.string.forced_update_toast, Toast.LENGTH_SHORT).show();
                             new UpdateAppTask(SplashActivity.this, handler).run();
                             break;
-                        case NO_UPDATE:         // 无需更新
+                        /**
+                         * 无更新，直接跳转到下一个 Activity
+                         * @see  MainActivity
+                         */
+                        case NO_UPDATE:
                             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                             startActivity(intent);
+                            SplashActivity.this.finish();
                             break;
                     }
             }
