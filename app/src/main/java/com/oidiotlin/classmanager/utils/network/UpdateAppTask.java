@@ -79,7 +79,7 @@ public class UpdateAppTask implements Runnable {
             while ((len = bufferedInputStream.read(buffer)) != -1) {
                 fileOutputStream.write(buffer, 0, len);
                 total += len;
-                pd.setProgress(total);;
+                pd.setProgress(total);
             }
             fileOutputStream.close();
             inputStream.close();
