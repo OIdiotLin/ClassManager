@@ -11,6 +11,7 @@
     <string name="info_connecting_err">登陆服务器失败/(ㄒoㄒ)/~~</string>
     <string name="info_download_success">数据库同步成功/(^_^)/</string>
 
+    <string name="forced_update_toast">版本差异过大，正在获取更新</string>
     <string name="update_dialog_title">我有新版本咯！</string>
     <string name="update_start_hint">开始更新，正在召唤服务器爸爸！</string>
     <string name="update_yes">欣喜地接受</string>
