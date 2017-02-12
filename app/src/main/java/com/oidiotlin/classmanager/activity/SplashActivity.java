@@ -18,8 +18,6 @@ import com.oidiotlin.classmanager.utils.network.CheckVersionTask;
 import com.oidiotlin.classmanager.utils.network.UpdateAppTask;
 import com.oidiotlin.classmanager.view.UpdateDialog;
 
-import it.sauronsoftware.ftp4j.FTPClient;
-
 import static com.oidiotlin.classmanager.utils.system.AppUtils.isOnline;
 import static com.oidiotlin.classmanager.utils.system.Constant.FORCED_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.NO_UPDATE;
@@ -33,19 +31,6 @@ public class SplashActivity extends Activity {
     private ImageView text;
     private TextView copyright;
 
-    private FTPClient client;
-
-    private Handler mMainHandler = new Handler() {
-        public void handleMessage(Message message) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setClass(getApplication(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-
-            finish();
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +40,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         if(!isOnline(this)){
-            Toast.makeText(this, R.string.info_connecting_err, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.info_offline, Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
