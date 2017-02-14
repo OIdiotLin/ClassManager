@@ -38,6 +38,12 @@ class AppVersionInfo {
 	public function getNewFeatures() {
 		return $newFeatures;
 	}
+
+	public function toArray() {
+		return array('versionCode' => $versionCode,
+		             'versionName' => $versionName,
+		             'newFeatures' => $newFeatures);
+	}
 }
 
 ?>
