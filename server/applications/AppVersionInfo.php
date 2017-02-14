@@ -20,7 +20,7 @@ class AppVersionInfo {
 	}
 
 	public function getVersionCode() {
-		return $versionCode;
+		return $this->versionCode;
 	}
 
 	public function setVersionName($versionName) {
@@ -28,7 +28,7 @@ class AppVersionInfo {
 	}
 
 	public function getVersionName() {
-		return $versionName;
+		return $this->versionName;
 	}
 
 	public function setNewFeatures($newFeatures) {
@@ -36,13 +36,13 @@ class AppVersionInfo {
 	}
 
 	public function getNewFeatures() {
-		return $newFeatures;
+		return $this->newFeatures;
 	}
 
 	public function toArray() {
-		return array('versionCode' => $versionCode,
-		             'versionName' => $versionName,
-		             'newFeatures' => $newFeatures);
+		return array('versionCode' => $this->versionCode,
+		             'versionName' => $this->versionName,
+		             'newFeatures' => $this->newFeatures);
 	}
 }
 
