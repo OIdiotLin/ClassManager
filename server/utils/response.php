@@ -35,7 +35,7 @@ class Response {
 			'data' => $data
 		);
 	
-		header("Content-Type:text/xml");	// 指定页面显示类型
+		header("Content-Type:text/xml; charset=UTF-8");	// 指定页面显示类型
 		$xml = "<?xml version='1.0' encoding='UTF-8'?>\n";
 		$xml .= "<root>\n";
 		$xml .= self::xmlEncode($result);
