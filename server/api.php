@@ -5,11 +5,11 @@ require_once 'index.php';
 
 function business($type) {
 	switch ($type) {
-		case constant('API_CHECK_UPDATE'):
-			echo 'checking update';
+		case API_CHECK_UPDATE:
+			checkUpdate();
 			break;
-		case constant('API_GET_APK_URL'):
-			echo constant('NEW_APK_URL');
+		case API_GET_APK_URL:
+			echo NEW_APK_URL;
 			break;
 		default:
 			show_index();
@@ -17,10 +17,8 @@ function business($type) {
 	}
 }
 
-var_dump($_GET);
-
-if (array_key_exists('business', $_GET))
-	business($_GET['business']);
+if (array_key_exists(API_ACT_NODE, $_GET))
+	business($_GET[API_ACT_NODE]);
 else
 	show_index();
 

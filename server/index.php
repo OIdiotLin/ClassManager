@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('prc');
+
 function show_index() {
 echo "
 <html>
@@ -11,8 +13,8 @@ echo "
 	<hr />
 
 	<ul>
-		<li>ip:</li>
-		<li>time:</li>
+		<li>ip: ".$_SERVER['REMOTE_ADDR']."</li>
+		<li>time: ".date('y-m-d H:i:s', time())."</li>
 	</ul>
 
 	<p style='text-align: center'>
