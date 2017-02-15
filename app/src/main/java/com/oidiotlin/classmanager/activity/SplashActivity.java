@@ -84,7 +84,7 @@ public class SplashActivity extends Activity {
                         case FORCED_UPDATE:
                             Toast.makeText(SplashActivity.this,
                                     R.string.forced_update_toast, Toast.LENGTH_SHORT).show();
-                            new UpdateAppTask(SplashActivity.this, handler).run();
+                            new Thread(new UpdateAppTask(SplashActivity.this, handler)).start();
                             break;
                         /**
                          * 无更新，直接跳转到下一个 Activity

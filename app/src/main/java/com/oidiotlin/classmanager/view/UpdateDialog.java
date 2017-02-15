@@ -40,7 +40,7 @@ public class UpdateDialog extends AlertDialog.Builder {
                         /**
                          * 开始下载并安装 apk
                          */
-                        new UpdateAppTask(context, handler).run();
+                        new Thread(new UpdateAppTask(context, handler)).start();
                     }
                 });
         this.setNegativeButton(R.string.update_no,

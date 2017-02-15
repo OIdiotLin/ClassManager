@@ -1,15 +1,16 @@
 <?php
 
+require_once 'applications/update.php';
 require_once 'utils/const.php';
 require_once 'index.php';
 
-function business($type) {
-	switch ($type) {
+function business($act) {
+	switch ($act) {
 		case API_CHECK_UPDATE:
-			checkUpdate();
+			askUpdate();	// return new version
 			break;
 		case API_GET_APK_URL:
-			echo NEW_APK_URL;
+			getApkUrl();	// return new apk file url
 			break;
 		default:
 			show_index();

@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -13,8 +15,9 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
+import static android.os.Process.killProcess;
+import static android.os.Process.myPid;
 import static com.oidiotlin.classmanager.utils.system.AppUtils.isSdCardOK;
 import static com.oidiotlin.classmanager.utils.system.Constant.API_GET_APK_URL;
 import static com.oidiotlin.classmanager.utils.system.Constant.APP_FILE_PATH;
@@ -30,8 +33,11 @@ import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_APK_NAME;
  */
 
 public class UpdateAppTask implements Runnable {
+
+    private final String TAG = "UpdateAppTask";
     private Context context;
     private Handler handler;
+
     public UpdateAppTask(Context context, Handler handler) {
         this.context = context;
         this.handler = handler;
@@ -39,6 +45,7 @@ public class UpdateAppTask implements Runnable {
 
     @Override
     public void run() {
+        Looper.prepare();
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setMessage("Downloading...");
@@ -48,10 +55,11 @@ public class UpdateAppTask implements Runnable {
             public void run() {
                 try {
                     URL url = new URL(SERVER_API + API_GET_APK_URL);
-                    URLConnection connection = url.openConnection();
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     InputStream inputStream = connection.getInputStream();
 
                     url = (new UrlParser()).parse(inputStream).get(0);
+                    Log.i(TAG, "run: new apk url = " + url.toString());
                     File apkFile = getFileFromServer(url, progressDialog);
                     installApk(apkFile);
                     progressDialog.dismiss();
@@ -90,8 +98,10 @@ public class UpdateAppTask implements Runnable {
     }
 
     private void installApk(File file) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromFile(file));
-        intent.setType("application/vnd.android.package-archive");
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         context.startActivity(intent);
+        killProcess(myPid());
     }
 }
