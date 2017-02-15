@@ -53,7 +53,7 @@ public class SplashActivity extends Activity {
         alphaAnimation.setDuration(3000);   // 渐变动画持续时间
         alphaAnimation.setStartOffset(800);    // 渐变动画延时
 
-        new CheckVersionTask(this, handler).run();
+        new Thread(new CheckVersionTask(SplashActivity.this, handler)).start();
 
         logo.setAnimation(alphaAnimation);
         text.setAnimation(alphaAnimation);
