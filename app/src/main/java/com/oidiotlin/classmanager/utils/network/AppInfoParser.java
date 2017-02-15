@@ -1,5 +1,6 @@
 package com.oidiotlin.classmanager.utils.network;
 
+import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -22,6 +23,8 @@ import static com.oidiotlin.classmanager.utils.system.Constant.XML_ROOT;
  */
 
 public class AppInfoParser implements IAppInfoParser {
+    private final String TAG = "AppInfoParser";
+
     @Override
     public List<AppInfo> parse(InputStream inputStream) throws Exception {
         List<AppInfo> appInfoList = null;
@@ -40,6 +43,7 @@ public class AppInfoParser implements IAppInfoParser {
                         break;
                     // Event - Tag's Starting
                     case XmlPullParser.START_TAG:
+                        Log.i(TAG, "parse: " + xmlPullParser.getName());
                         if (xmlPullParser.getName().equals(XML_ROOT))
                             info = new AppInfo();
                         else if (xmlPullParser.getName().equals(APPINFO_VERSION_CODE)) {

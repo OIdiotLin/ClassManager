@@ -36,7 +36,9 @@ public class AppInfo {
 
     @Override
     public String toString() {
-        return "Application Information: versionCode - " + versionCode
-                + " versionName - " + versionName;
+        return "Application Information:\n"
+                + "versionCode: " + versionCode + "\n"
+                + "versionName: " + versionName + "\n"
+                + "newFeatures: " + newFeatures;
     }
 }

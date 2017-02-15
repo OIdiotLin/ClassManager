@@ -39,6 +39,7 @@ public class CheckVersionTask implements Runnable {
     public void run() {
         try {
             URL url = new URL(SERVER_API + API_CHECK_UPDATE);
+            Log.i(TAG, "run: "+url.toString());
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setConnectTimeout(SERVER_RESPONSE_TIMEOUT);
             InputStream inputStream = connection.getInputStream();
@@ -46,7 +47,7 @@ public class CheckVersionTask implements Runnable {
 
             int remoteVersion = remoteInfo.getVersionCode();
             int localVersion = getVersionCode(context);
-            Log.i(TAG, "run: remoteVer = " + remoteVersion + "localVer = " + localVersion);
+            Log.i(TAG, "run: " + remoteInfo.toString());
 
             if (remoteVersion - localVersion > VERSION_MAX_DIFF_TOLERANCE) {    // Forced Update
                 Message msg = new Message();
