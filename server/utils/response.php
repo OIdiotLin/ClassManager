@@ -65,7 +65,7 @@ class Response {
 	 * @param	array	$data	数据
 	 */
 	public static function show($code, $message = '', $data = array()) {
-		$type = isset($_GET['format']) ? $_GET['format'] : 'json';
+		$type = isset($_GET['format']) ? $_GET['format'] : 'xml';
 		
 		$result = array(
 			'code' => $code,
