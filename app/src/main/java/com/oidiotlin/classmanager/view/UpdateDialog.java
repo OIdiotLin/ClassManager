@@ -24,6 +24,7 @@ public class UpdateDialog extends AlertDialog.Builder {
     public UpdateDialog(final Context context, final Handler handler, AppInfo info) {
         super(context);
         final View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_update, null);
+        setCancelable(false);       // 使不能通过 back 键或点击空白来退出 dialog
         this.setIcon(R.drawable.ic_speaker);
         this.setTitle(R.string.update_dialog_title);
         this.setView(dialogView);
