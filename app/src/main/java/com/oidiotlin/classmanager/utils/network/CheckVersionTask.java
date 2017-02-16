@@ -38,6 +38,7 @@ public class CheckVersionTask implements Runnable {
     @Override
     public void run() {
         try {
+            Thread.sleep(3000);
             URL url = new URL(SERVER_API + API_CHECK_UPDATE);
             Log.i(TAG, "run: "+url.toString());
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
