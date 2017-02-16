@@ -1,11 +1,9 @@
 package com.oidiotlin.classmanager.utils.network;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -25,6 +23,11 @@ import static com.oidiotlin.classmanager.utils.system.Constant.DOWNLOAD_ERROR;
 import static com.oidiotlin.classmanager.utils.system.Constant.SERVER_API;
 import static com.oidiotlin.classmanager.utils.system.Constant.SERVER_RESPONSE_TIMEOUT;
 import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_APK_NAME;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_DISMISS;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_SETMAX;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_SHOW;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_UPDATEPROGRESS;
 
 
 /**
@@ -45,11 +48,19 @@ public class UpdateAppTask implements Runnable {
 
     @Override
     public void run() {
-        Looper.prepare();
+        /*
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setMessage("Downloading...");
-        progressDialog.show();
+        progressDialog.show();*/
+        /**
+         * show the update dialog
+         */
+        Message msg = new Message();
+        msg.what = UPDATE_DIALOG;
+        msg.arg1 = UPDATE_DIALOG_SHOW;
+        handler.sendMessage(msg);
+
         new Thread() {  // 下载并安装
             @Override
             public void run() {
@@ -60,9 +71,15 @@ public class UpdateAppTask implements Runnable {
 
                     url = (new UrlParser()).parse(inputStream).get(0);
                     Log.i(TAG, "run: new apk url = " + url.toString());
-                    File apkFile = getFileFromServer(url, progressDialog);
+                    File apkFile = getFileFromServer(url);
                     installApk(apkFile);
-                    progressDialog.dismiss();
+                    /**
+                     * dismiss the update dialog
+                     */
+                    Message msg = new Message();
+                    msg.what = UPDATE_DIALOG;
+                    msg.arg1 = UPDATE_DIALOG_DISMISS;
+                    handler.sendMessage(msg);
                 } catch (Exception e) {
                     Message msg = new Message();
                     msg.what = DOWNLOAD_ERROR;
@@ -71,14 +88,25 @@ public class UpdateAppTask implements Runnable {
                 }
             }
         }.run();
+
     }
 
-    private File getFileFromServer(URL url, ProgressDialog pd) throws Exception {
+    private File getFileFromServer(URL url) throws Exception {
         if (isSdCardOK()) {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = connection.getInputStream();
             connection.setConnectTimeout(SERVER_RESPONSE_TIMEOUT);
-            pd.setMax(connection.getContentLength());   // set 100% progress size
+            //pd.setMax(connection.getContentLength());   // set 100% progress size
+
+            /**
+             * 返回给 UI 设置 ProgressDialog 最大值
+             */
+            Message msg = new Message();
+            msg.what = UPDATE_DIALOG;
+            msg.arg1 = UPDATE_DIALOG_SETMAX;
+            msg.arg2 = connection.getContentLength();
+            handler.sendMessage(msg);
+
             File file = new File(APP_FILE_PATH + UPDATE_APK_NAME);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
@@ -87,7 +115,12 @@ public class UpdateAppTask implements Runnable {
             while ((len = bufferedInputStream.read(buffer)) != -1) {
                 fileOutputStream.write(buffer, 0, len);
                 total += len;
-                pd.setProgress(total);
+
+                Message msg1 = new Message();
+                msg1.what = UPDATE_DIALOG;
+                msg1.arg1 = UPDATE_DIALOG_UPDATEPROGRESS;
+                msg1.arg2 = total;
+                handler.sendMessage(msg1);
             }
             fileOutputStream.close();
             inputStream.close();

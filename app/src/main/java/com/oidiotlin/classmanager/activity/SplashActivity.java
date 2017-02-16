@@ -1,10 +1,12 @@
 package com.oidiotlin.classmanager.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -23,13 +25,20 @@ import static com.oidiotlin.classmanager.utils.system.Constant.FORCED_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.NO_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.OPTIONAL_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_CLIENT;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_DISMISS;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_SETMAX;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_SHOW;
+import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_UPDATEPROGRESS;
 
 
 public class SplashActivity extends Activity {
 
+    private final String TAG = "SplashActivity";
     private ImageView logo;
     private ImageView text;
     private TextView copyright;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +68,9 @@ public class SplashActivity extends Activity {
         text.setAnimation(alphaAnimation);
         copyright.setAnimation(alphaAnimation);
 
+        progressDialog = new ProgressDialog(SplashActivity.this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setMessage("Downloading...");
     }
 
     /**
@@ -96,6 +108,43 @@ public class SplashActivity extends Activity {
                             SplashActivity.this.finish();
                             break;
                     }
+                    break;  // case UPDATE_CLIENT
+
+                /**
+                 * Handle ProgressDialog in UpdateAppTask
+                 */
+                case UPDATE_DIALOG:
+                    switch (msg.arg1) {
+                        /**
+                         * 显示更新进度对话框
+                         */
+                        case UPDATE_DIALOG_SHOW:
+                            progressDialog.show();
+                            break;
+                        /**
+                         * 关闭对话框
+                         */
+                        case UPDATE_DIALOG_DISMISS:
+                            progressDialog.dismiss();
+                            break;
+                        /**
+                         * 设置最大值
+                         */
+                        case UPDATE_DIALOG_SETMAX:
+                            Log.i(TAG, "handleMessage: setMax: " + msg.arg2);
+                            progressDialog.setMax(msg.arg2);
+                            Log.i(TAG, "handleMessage: getMax: " + progressDialog.getMax());
+                            break;
+                        /**
+                         * 更新进度
+                         */
+                        case UPDATE_DIALOG_UPDATEPROGRESS:
+                            Log.i(TAG, "handleMessage: getMax: " + progressDialog.getMax());
+                            Log.i(TAG, "handleMessage: prepare to setProgress: " + msg.arg2);
+                            progressDialog.setProgress(msg.arg2);
+                            break;
+                    }
+                    break;  // case UPDATE_DIALOG
             }
         }
     };
