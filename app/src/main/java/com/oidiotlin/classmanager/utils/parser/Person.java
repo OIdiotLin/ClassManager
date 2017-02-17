@@ -1,11 +1,13 @@
 package com.oidiotlin.classmanager.utils.parser;
 
+import java.io.Serializable;
+
 /**
  * Created by OIdiot on 2017/1/24.
  * Project: ClassManager
  */
 
-public class Person {
+public class Person implements Serializable {
     private String studentNumber;   // 学号
     private String name;    // 姓名
     private String pinyin;  // 拼音
