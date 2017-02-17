@@ -1,4 +1,4 @@
-package com.oidiotlin.classmanager.utils.network;
+package com.oidiotlin.classmanager.utils.parser;
 
 import java.io.InputStream;
 import java.util.List;

@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.network.AppInfo;
+import com.oidiotlin.classmanager.utils.parser.AppInfo;
 import com.oidiotlin.classmanager.utils.network.CheckVersionTask;
 import com.oidiotlin.classmanager.utils.network.UpdateAppTask;
 import com.oidiotlin.classmanager.view.UpdateDialog;

@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.oidiotlin.classmanager.utils.parser.AppInfo;
+import com.oidiotlin.classmanager.utils.parser.AppInfoParser;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;

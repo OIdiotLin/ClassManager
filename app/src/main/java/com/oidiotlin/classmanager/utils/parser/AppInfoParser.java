@@ -1,4 +1,4 @@
-package com.oidiotlin.classmanager.utils.network;
+package com.oidiotlin.classmanager.utils.parser;
 
 import android.util.Log;
 import android.util.Xml;

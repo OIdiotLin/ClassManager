@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.oidiotlin.classmanager.utils.parser.UrlParser;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
