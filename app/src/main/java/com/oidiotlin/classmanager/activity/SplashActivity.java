@@ -15,13 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.parser.AppInfo;
 import com.oidiotlin.classmanager.utils.network.CheckVersionTask;
+import com.oidiotlin.classmanager.utils.network.GetPersonListTask;
 import com.oidiotlin.classmanager.utils.network.UpdateAppTask;
+import com.oidiotlin.classmanager.utils.parser.AppInfo;
 import com.oidiotlin.classmanager.view.UpdateDialog;
+
+import java.io.Serializable;
 
 import static com.oidiotlin.classmanager.utils.system.AppUtils.isOnline;
 import static com.oidiotlin.classmanager.utils.system.Constant.FORCED_UPDATE;
+import static com.oidiotlin.classmanager.utils.system.Constant.GET_PERSONS_LIST_TASK;
+import static com.oidiotlin.classmanager.utils.system.Constant.GET_PERSONS_LIST_TASK_FAIL;
+import static com.oidiotlin.classmanager.utils.system.Constant.GET_PERSONS_LIST_TASK_SUCCESS;
 import static com.oidiotlin.classmanager.utils.system.Constant.NO_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.OPTIONAL_UPDATE;
 import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_CLIENT;
@@ -30,6 +36,8 @@ import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_DIS
 import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_SETMAX;
 import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_SHOW;
 import static com.oidiotlin.classmanager.utils.system.Constant.UPDATE_DIALOG_UPDATEPROGRESS;
+import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
+import static java.lang.Thread.sleep;
 
 
 public class SplashActivity extends Activity {
@@ -103,9 +111,7 @@ public class SplashActivity extends Activity {
                          * @see  MainActivity
                          */
                         case NO_UPDATE:
-                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            SplashActivity.this.finish();
+                            new Thread(new GetPersonListTask(SplashActivity.this, handler)).start();
                             break;
                     }
                     break;  // case UPDATE_CLIENT
@@ -145,6 +151,34 @@ public class SplashActivity extends Activity {
                             break;
                     }
                     break;  // case UPDATE_DIALOG
+
+                /**
+                 * 线程：获取 Persons 列表
+                 */
+                case GET_PERSONS_LIST_TASK:
+                    switch (msg.arg1) {
+                        /**
+                         * 获取成功
+                         */
+                        case GET_PERSONS_LIST_TASK_SUCCESS:
+                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            intent.putExtra(XML_NODE_PERSON, (Serializable) msg.obj);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        /**
+                         * 获取失败
+                         */
+                        case GET_PERSONS_LIST_TASK_FAIL:
+                            Toast.makeText(SplashActivity.this,
+                                    R.string.info_connecting_err, Toast.LENGTH_SHORT).show();
+                            try {
+                                sleep(2000);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            finish();
+                    }
             }
         }
     };
