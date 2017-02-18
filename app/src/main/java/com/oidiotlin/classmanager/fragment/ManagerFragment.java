@@ -1,8 +1,6 @@
 package com.oidiotlin.classmanager.fragment;
 
 import android.animation.ValueAnimator;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
@@ -16,14 +14,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.system.Constant;
 import com.oidiotlin.classmanager.utils.database.MySqliteHelper;
 import com.oidiotlin.classmanager.utils.parser.Person;
+import com.oidiotlin.classmanager.utils.system.Constant;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+
+import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
 
 /**
  * Created by OIdiot on 2016/12/21.
@@ -33,7 +30,7 @@ import java.util.List;
 public class ManagerFragment extends ListFragment {
     public static final String TAG = "ManagerFragment";
     private ListView listView;
-    private List<Person> lists;
+    private List<Person> persons;
 
     private MySqliteHelper dbHelper;
 
@@ -43,60 +40,11 @@ public class ManagerFragment extends ListFragment {
         View view = inflater.inflate(R.layout.fragment_manager, null);
         Log.i(TAG, "onCreateView: ");
         listView = (ListView) view.findViewById(android.R.id.list);
-        dbHelper = new MySqliteHelper(getActivity());
-        lists = new ArrayList<Person>();
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        lists.clear();
 
-        /**
-         * fill list person with data in database.
-         */
-        Cursor cursor = db.rawQuery("select * from " + Constant.TABLE_NAME, null);
-        if (cursor != null && cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                Person person = new Person();
-                person.setName(cursor.getString(cursor.getColumnIndex(Constant.NAME)));
-                person.setPinyin(cursor.getString(cursor.getColumnIndex(Constant.PINYIN)));
-                person.setGender(cursor.getString(cursor.getColumnIndex(Constant.GENDER)));
-                person.setBirthday(cursor.getString(cursor.getColumnIndex(Constant.BIRTHDAY)));
-                person.setStudentNumber(cursor.getString(cursor.getColumnIndex(Constant.STUDENT_NUMBER)));
-                person.setNativeProvince(cursor.getString(cursor.getColumnIndex(Constant.NATIVE_PROVINCE)));
-                person.setDormitory(cursor.getString(cursor.getColumnIndex(Constant.DORMITORY)));
-                person.setPhoneNumber(cursor.getString(cursor.getColumnIndex(Constant.PHONE_NUMBER)));
-                person.setPosition(cursor.getString(cursor.getColumnIndex(Constant.POSITION)));
-                person.setParticipation(cursor.getInt(cursor.getColumnIndex(Constant.PARTICIPATION)));
-                Log.i(TAG, "onCreateView: Person " + person.getName());
-                lists.add(person);
-            }
-            /**
-             * Sort lists by alphabetic spelling of names ( Ascending )
-             */
-            Collections.sort(lists, new Comparator<Person>() {
-                @Override
-                public int compare(Person o1, Person o2) {
-                    if (o1 == null || o2 == null) {
-                        return 0;
-                    }
-                    try{
-                        byte[] bufA = o1.getPinyin().getBytes();
-                        byte[] bufB = o2.getPinyin().getBytes();
-                        int compLength = Math.min(bufA.length, bufB.length);
-                        for (int i = 0; i < compLength ; i++) {
-                            if (bufA[i] < bufB[i])
-                                return -1;
-                            else if (bufA[i] > bufB[i])
-                                return 1;
-                        }
-                        return bufA.length - bufB.length;
-                    } catch (Exception e){
-                        return 0;
-                    }
-                }
-            });
-            listView.setAdapter(new MyAdapter());
-        }
-        db.close();
-        cursor.close();
+        persons = (List<Person>)(getArguments().getSerializable(XML_NODE_PERSON));
+        Log.i(TAG, "onCreateView: ManagerFragment: " + persons.toString());
+
+        listView.setAdapter(new MyAdapter());
         return view;
     }
 
@@ -135,13 +83,6 @@ public class ManagerFragment extends ListFragment {
         });
         anim.setDuration(Constant.DETAILS_ANIM_DURATION);
         anim.start();
-        /*
-        if(details.getVisibility() == VISIBLE)
-            details.setVisibility(GONE);
-        else if(details.getVisibility() == GONE)
-            details.setVisibility(VISIBLE);
-        super.onListItemClick(l, v, position, id);
-        */
         super.onListItemClick(l, v, position, id);
     }
 
@@ -172,7 +113,7 @@ public class ManagerFragment extends ListFragment {
             /**
              * Fill the View
              */
-            Person person = lists.get(position);
+            Person person = persons.get(position);
             if(person.getName() != null)
                 name.setText(person.getName());
             if(person.getGender() != null)
@@ -197,7 +138,7 @@ public class ManagerFragment extends ListFragment {
 
         @Override
         public int getCount() {
-            return lists.size();
+            return persons.size();
         }
     }
 }

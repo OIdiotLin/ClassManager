@@ -18,6 +18,8 @@ import com.oidiotlin.classmanager.R;
 import com.oidiotlin.classmanager.fragment.ManagerFragment;
 import com.oidiotlin.classmanager.fragment.RandPickFragment;
 
+import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
+
 
 public class MainActivity extends FragmentActivity {
     public static final String TAG = "MainActivity";
@@ -30,6 +32,7 @@ public class MainActivity extends FragmentActivity {
     private ImageButton menuButton;
     private ImageButton helpButton;
 
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,9 @@ public class MainActivity extends FragmentActivity {
         randPickButton.setOnClickListener(new ToolBarButtonClickListener());
 
         ListFragment fragment = new ManagerFragment();
+        bundle.putSerializable(XML_NODE_PERSON,
+                savedInstanceState.getSerializable(XML_NODE_PERSON));
+        fragment.setArguments(bundle);
         switchFragment(fragment, R.string.title_fragment_manager);
     }
 
@@ -80,6 +86,7 @@ public class MainActivity extends FragmentActivity {
                 case R.id.menu_button_manager:
                     Log.i("ButtonListener", "onClick: manager button.");
                     fragment = new ManagerFragment();
+                    fragment.setArguments(bundle);
                     switchFragment(fragment, R.string.title_fragment_manager);
                     break;
                 case R.id.menu_button_randpick:

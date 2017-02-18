@@ -19,9 +19,13 @@ import com.oidiotlin.classmanager.utils.network.CheckVersionTask;
 import com.oidiotlin.classmanager.utils.network.GetPersonListTask;
 import com.oidiotlin.classmanager.utils.network.UpdateAppTask;
 import com.oidiotlin.classmanager.utils.parser.AppInfo;
+import com.oidiotlin.classmanager.utils.parser.Person;
 import com.oidiotlin.classmanager.view.UpdateDialog;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import static com.oidiotlin.classmanager.utils.system.AppUtils.isOnline;
 import static com.oidiotlin.classmanager.utils.system.Constant.FORCED_UPDATE;
@@ -162,7 +166,33 @@ public class SplashActivity extends Activity {
                          */
                         case GET_PERSONS_LIST_TASK_SUCCESS:
                             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                            intent.putExtra(XML_NODE_PERSON, (Serializable) msg.obj);
+                            List<Person> persons = (List<Person>) msg.obj;
+                            /**
+                             * Sort persons by alphabetic spelling of names ( Ascending )
+                             */
+                            Collections.sort(persons, new Comparator<Person>() {
+                                @Override
+                                public int compare(Person o1, Person o2) {
+                                    if (o1 == null || o2 == null) {
+                                        return 0;
+                                    }
+                                    try{
+                                        byte[] bufA = o1.getPinyin().getBytes();
+                                        byte[] bufB = o2.getPinyin().getBytes();
+                                        int compLength = Math.min(bufA.length, bufB.length);
+                                        for (int i = 0; i < compLength ; i++) {
+                                            if (bufA[i] < bufB[i])
+                                                return -1;
+                                            else if (bufA[i] > bufB[i])
+                                                return 1;
+                                        }
+                                        return bufA.length - bufB.length;
+                                    } catch (Exception e){
+                                        return 0;
+                                    }
+                                }
+                            });
+                            intent.putExtra(XML_NODE_PERSON, (Serializable) persons);
                             startActivity(intent);
                             finish();
                             break;
