@@ -1,7 +1,5 @@
 <?php
 
-require_once 'utils/response.php';
-require_once 'utils/const.php';
 require_once 'AppVersionInfo.php';
 
 function askUpdate() {

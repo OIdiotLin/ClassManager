@@ -1,9 +1,6 @@
 <?php
 
-require_once 'applications/update.php';
-require_once 'applications/personManage.php';
-require_once 'utils/const.php';
-require_once 'index.php';
+require_once 'includes.php';
 
 function business($act) {
 	switch ($act) {
