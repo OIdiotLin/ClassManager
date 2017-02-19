@@ -32,7 +32,7 @@ echo "
 ";
 }
 
-if ($_SERVER['PHP_SELF'] == "/index.php")
+if ($_SERVER['PHP_SELF'] == "/ClassManager/index.php")
 	show_index();
 
 ?>

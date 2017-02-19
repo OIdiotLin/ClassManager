@@ -54,8 +54,9 @@ public class MainActivity extends FragmentActivity {
         randPickButton.setOnClickListener(new ToolBarButtonClickListener());
 
         ListFragment fragment = new ManagerFragment();
+        bundle = new Bundle();
         bundle.putSerializable(XML_NODE_PERSON,
-                savedInstanceState.getSerializable(XML_NODE_PERSON));
+                getIntent().getSerializableExtra(XML_NODE_PERSON));
         fragment.setArguments(bundle);
         switchFragment(fragment, R.string.title_fragment_manager);
     }

@@ -23,8 +23,6 @@ import com.oidiotlin.classmanager.utils.parser.Person;
 import com.oidiotlin.classmanager.view.UpdateDialog;
 
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static com.oidiotlin.classmanager.utils.system.AppUtils.isOnline;
@@ -170,6 +168,7 @@ public class SplashActivity extends Activity {
                             /**
                              * Sort persons by alphabetic spelling of names ( Ascending )
                              */
+                            /*
                             Collections.sort(persons, new Comparator<Person>() {
                                 @Override
                                 public int compare(Person o1, Person o2) {
@@ -192,6 +191,7 @@ public class SplashActivity extends Activity {
                                     }
                                 }
                             });
+                            */
                             intent.putExtra(XML_NODE_PERSON, (Serializable) persons);
                             startActivity(intent);
                             finish();
