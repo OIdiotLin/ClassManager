@@ -4,7 +4,7 @@ require_once 'Person.php';
 
 function getPersonList() {
 	$dbHelper = new databaseHelper();
-	$dbHelper->select_db(DB_NAME);
+	$dbHelper->select_db();
 	$sql = "SELECT * from ".TBL_PERSONS." WHERE true";
 	$result = $dbHelper->query($sql);
 
@@ -16,6 +16,11 @@ function getPersonList() {
 	}
 
 	Response::show(200, 'OK', $list);
+}
+
+function addParticipation(Person &$person, $deltaParticipation) {
+	// TODO
+	$person->
 }
 
 ?>

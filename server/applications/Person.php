@@ -13,6 +13,9 @@ class Person {
 	private $position;
 	private $participation;
 
+	/**
+	 * Setter and Getter
+	 */
 	public function getId() {
 	    return $this->id;
 	}
@@ -102,7 +105,14 @@ class Person {
 	    $this->participation = $participation;
 	    return $this;
 	}
-	
+
+	/**
+	 * updating functions
+	 */
+	public function addParticipation($delta) {
+		$this->participation += $delta;
+	}
+
 }
 
 ?>
