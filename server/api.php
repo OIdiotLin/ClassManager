@@ -23,6 +23,12 @@ function business($act) {
 			getPersonList();	
 			break;
 		/**
+		 * add event by POST
+		 */
+		case API_ADD_EVENT:
+			addEvent();
+			break;
+		/**
 		 * show index if without any recognized args
 		 */
 		default:
