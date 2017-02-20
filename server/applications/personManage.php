@@ -3,10 +3,12 @@
 require_once 'Person.php';
 
 function getPersonList() {
-	$dbHelper = new databaseHelper();
-	$dbHelper->select_db();
+	$handler = mysql_connect();
+	mysql_select_db(DB_NAME);
+	mysql_query("SET AUTOCOMMIT=0");	// unset auto-commit
+	mysql_query("BEGIN")	// start event
 	$sql = "SELECT * from ".TBL_PERSONS." WHERE true";
-	$result = $dbHelper->query($sql);
+	$result = mysql_query($sql);
 
 	$list = array();
 
@@ -16,11 +18,19 @@ function getPersonList() {
 	}
 
 	Response::show(200, 'OK', $list);
+
+	mysql_close($handler);
 }
 
-function addParticipation(Person &$person, $deltaParticipation) {
-	// TODO
-	$person->
+/**
+ * 修改数据库，为对应 id 的人增加 participation 值
+ * @param _GET["id"]
+ */
+function addParticipation(&$personId, $deltaParticipation) {
+	foreach ($id as $key => $value) {
+		# code...
+	}
+	
 }
 
 ?>
