@@ -14,10 +14,10 @@ import com.oidiotlin.classmanager.R;
  * Project: ClassManager
  */
 
-public class RandPickFragment extends ListFragment {
+public class EventFragment extends ListFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_randpick, null);
+        return inflater.inflate(R.layout.fragment_event, null);
     }
 }

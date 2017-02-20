@@ -37,6 +37,6 @@
             android:id="@+id/menu_button_randpick"
             style="@style/MenuContentButtonStyle"
             android:src="@drawable/ic_randpick"
-            android:background="@color/bg_randPick_fragment"/>
+            android:background="@color/bg_event_fragment"/>
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

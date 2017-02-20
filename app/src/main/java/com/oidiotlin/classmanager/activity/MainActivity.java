@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.oidiotlin.classmanager.R;
 import com.oidiotlin.classmanager.fragment.ManagerFragment;
-import com.oidiotlin.classmanager.fragment.RandPickFragment;
+import com.oidiotlin.classmanager.fragment.EventFragment;
 
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
 
@@ -92,7 +92,7 @@ public class MainActivity extends FragmentActivity {
                     break;
                 case R.id.menu_button_randpick:
                     Log.i("ButtonListener", "onClick: rand pick button.");
-                    fragment = new RandPickFragment();
+                    fragment = new EventFragment();
                     switchFragment(fragment, R.string.title_fragment_randpick);
                 default:
                     break;
