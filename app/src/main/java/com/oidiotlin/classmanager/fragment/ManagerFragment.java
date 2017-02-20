@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.utils.database.MySqliteHelper;
 import com.oidiotlin.classmanager.utils.parser.Person;
 import com.oidiotlin.classmanager.utils.system.Constant;
 
@@ -31,8 +30,6 @@ public class ManagerFragment extends ListFragment {
     public static final String TAG = "ManagerFragment";
     private ListView listView;
     private List<Person> persons;
-
-    private MySqliteHelper dbHelper;
 
     @Nullable
     @Override
