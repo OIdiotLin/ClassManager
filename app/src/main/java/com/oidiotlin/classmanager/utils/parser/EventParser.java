@@ -18,6 +18,7 @@ import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_EVENT_DA
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_EVENT_NAME;
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_EVENT_PARTICIPATION;
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_EVENT_PLACE;
+import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_EVENT_TIME;
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PARTICIPATION;
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_ROOT;
@@ -76,6 +77,11 @@ public class EventParser implements IEventParser {
                             if (event != null) {
                                 event.setParticipation(Integer.parseInt(xmlPullParser.getText()));
                             }
+                        } else if (xmlPullParser.getName().equals(XML_NODE_EVENT_TIME)) {
+                            eventType = xmlPullParser.next();
+                            if (event != null) {
+                                event.setTime(xmlPullParser.getText());
+                            }
                         }
                         break;
                     // Event - Tag's Ending.
@@ -116,6 +122,10 @@ public class EventParser implements IEventParser {
                 xmlSerializer.startTag(null, XML_NODE_EVENT_DATE);
                 xmlSerializer.text(event.getDate());
                 xmlSerializer.endTag(null, XML_NODE_EVENT_DATE);
+
+                xmlSerializer.startTag(null, XML_NODE_EVENT_TIME);
+                xmlSerializer.text(event.getTime());
+                xmlSerializer.endTag(null, XML_NODE_EVENT_TIME);
 
                 xmlSerializer.startTag(null, XML_NODE_EVENT_PLACE);
                 xmlSerializer.text(event.getPlace());
