@@ -93,7 +93,7 @@ public class MainActivity extends FragmentActivity {
                 case R.id.menu_button_randpick:
                     Log.i("ButtonListener", "onClick: rand pick button.");
                     fragment = new EventFragment();
-                    switchFragment(fragment, R.string.title_fragment_randpick);
+                    switchFragment(fragment, R.string.title_fragment_event);
                 default:
                     break;
             }
