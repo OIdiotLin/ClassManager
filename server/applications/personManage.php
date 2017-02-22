@@ -24,7 +24,7 @@ function getPersonList() {
 
 /**
  * 修改数据库，为对应 id 的人增加 participation 值
- * @param _GET["id"]
+ * 
  */
 function addParticipation(&$personIdList, $deltaParticipation) {
 	foreach ($id as $key => $value) {

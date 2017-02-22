@@ -18,4 +18,6 @@
     <color name="list_divider">#bfbfbf</color>
     <color name="item_details_text">#83716a</color>
     <color name="shadow1">#7c192429</color>
+
+    <color name="new_event_form_title">#0379FF</color>
 </resources>

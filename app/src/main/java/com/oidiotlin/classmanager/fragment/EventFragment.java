@@ -57,7 +57,9 @@ public class EventFragment extends ListFragment {
 
         @Override
         public int getCount() {
-            return events.size();
+            if (events != null)
+                return events.size();
+            return 0;
         }
 
         @Override
