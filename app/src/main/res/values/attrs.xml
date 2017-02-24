@@ -23,4 +23,14 @@
     <declare-styleable name="CustomSlider">
         <attr name="rightPadding"/>
     </declare-styleable>
+
+    <!-- TODO 增添其他属性-->
+    <!-- 表单项 -->
+    <declare-styleable name="FormItem">
+        <attr name="title_text" format="reference|string" />
+        <attr name="title_id" format="reference" />
+        <attr name="title_visible" format="boolean" />
+        <attr name="title_color" format="reference|color" />
+        <attr name="content_id" format="reference" />
+    </declare-styleable>
 </resources>
