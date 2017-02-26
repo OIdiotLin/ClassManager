@@ -1,10 +1,12 @@
 package com.oidiotlin.classmanager.view;
 
 import android.content.Context;
-import android.view.View.OnClickListener;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import com.oidiotlin.classmanager.R;
 
 import java.util.Calendar;
 
@@ -13,18 +15,25 @@ import java.util.Calendar;
  * Project: ClassManager
  */
 
-public class NewEvent extends LinearLayout implements OnClickListener{
+public class NewEvent extends LinearLayout {
 
     public static final String TAG = "NewEvent";
     private Calendar calendar;
+    private FormItem name;
+    private FormItem place;
+    private FormItem date;
+    private FormItem time;
+    private FormItem content;
 
     public NewEvent(Context context) {
-        super(context);
-        calendar = Calendar.getInstance();
+        this(context, null);
     }
 
-    @Override
-    public void onClick(View v) {
-        TextView lastTitle;
+    public NewEvent(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.new_event, null);
+        addView(view);
     }
 }
+

@@ -97,24 +97,32 @@
     </style>
 
     <!-- New Event Form -->
-    <style name="NewEventFormItemStyle">
+    <style name="FormTitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/title</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="FormItemStyle">
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="title_text_color">@color/new_event_form_title</item>
+        <item name="title_text_size">7sp</item>
+        <item name="title_visible">false</item>
+        <item name="content_text_color">@color/title</item>
+        <item name="content_text_size">10sp</item>"
+    </style>
 
-    </style>
-    <style name="NewEventFormTitleStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/new_event_form_title</item>
-    </style>
-    <style name="NewEventFormContentStyle">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">#000000</item>
+    <style name="NewEventButtonStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
 </resources>

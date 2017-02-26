@@ -17,6 +17,7 @@
     <string name="update_yes">欣喜地接受</string>
     <string name="update_no">残忍地拒绝</string>
 
+    <string name="new_event">新建活动</string>
     <string name="new_event_name_title">名称</string>
     <string name="new_event_place_title">地点</string>
     <string name="new_event_date_title">日期</string>

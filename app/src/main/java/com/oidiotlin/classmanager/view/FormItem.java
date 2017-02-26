@@ -2,9 +2,12 @@ package com.oidiotlin.classmanager.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.oidiotlin.classmanager.R;
 
@@ -13,36 +16,98 @@ import com.oidiotlin.classmanager.R;
  * Project: ClassManager
  */
 
-public class FormItem extends LinearLayout implements OnClickListener {
+public class FormItem extends LinearLayout implements TextWatcher {
     private Boolean isTitleVisible;
-    private int titleId;
-    private int contentId;
-    private int backgroundId;
+    private String titleText;
+    private int titleTextSize;
+    private int titleTextColor;
+
+    private int contentTextSize;
+    private String contentHint;
+
+    private int background;
+
+    private TextView title;
+    private EditText content;
+
+    private LayoutParams titleParams;
+    private LayoutParams contentParams;
 
     public FormItem(Context context) {
         this(context, null);
     }
 
     public FormItem(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public FormItem(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs);
         initView(attrs);
     }
 
     public void initView(AttributeSet attrs) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.FormItem);
         /**
-         * Access title TextView
+         * 获取属性
          */
         isTitleVisible = typedArray.getBoolean(R.styleable.FormItem_title_visible, false);
-        titleId = typedArray.getResourceId(R.styleable.FormItem_title_text, -1);
-        /**
-         * Access contentId
-         */
-        // TODO 获取其他属性
+        titleText = typedArray.getString(R.styleable.FormItem_title_text);
+        titleTextColor = typedArray.getColor(R.styleable.FormItem_title_text_color, 0);
+        titleTextSize = typedArray.getDimensionPixelSize(R.styleable.FormItem_title_text_size, 0);
+
+        contentTextSize = typedArray.getDimensionPixelSize(R.styleable.FormItem_content_text_size, 0);
+        contentHint = typedArray.getString(R.styleable.FormItem_content_hint);
+
+        background = typedArray.getColor(R.styleable.FormItem_background, 0);
+
         typedArray.recycle();
+
+        title = new TextView(getContext());
+        content = new EditText(getContext());
+
+        /**
+         * 加载属性
+         */
+        title.setVisibility(isTitleVisible ? VISIBLE : INVISIBLE);
+        title.setTextSize(titleTextSize);
+        title.setTextColor(titleTextColor);
+        title.setText(titleText);
+
+        content.setHint(contentHint);
+        content.setTextSize(contentTextSize);
+        content.setBackground(null);
+
+        this.setBackgroundColor(background);
+        this.setPadding(0,0,0,0);
+        titleParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        addView(title, titleParams);
+        contentParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        addView(content, contentParams);
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (s != null) {
+            if (s.length() > 0)
+                titleFadeIn();
+            else
+                titleFadeOut();
+        } else
+            titleFadeOut();
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    public void titleFadeIn() {
+        title.animate().alpha(1f).setDuration(500).start();
+    }
+
+    private void titleFadeOut() {
+        title.animate().alpha(0f).setDuration(500).start();
     }
 }

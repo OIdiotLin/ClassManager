@@ -1,114 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:divider="@drawable/divider_line"
+    android:divider="@drawable/divider_line_horizontal"
     android:showDividers="middle"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
     android:descendantFocusability="blocksDescendants">
 
-    <!-- details -->
-    <LinearLayout
+    <TextView
+        android:id="@+id/new_event_title"
+        style="@style/FormTitleStyle"
+        android:text="@string/new_event"/>
+
+    <com.oidiotlin.classmanager.view.FormItem
         android:id="@+id/new_event_name"
-        style="@style/NewEventFormItemStyle">
-        <TextView
-            android:id="@+id/new_event_name_title"
-            style="@style/NewEventFormTitleStyle"
-            android:visibility="invisible"
-            android:text="@string/new_event_name_title"/>
-        <EditText
-            android:id="@+id/new_event_name_content"
-            style="@style/NewEventFormContentStyle"
-            android:hint="@string/new_event_name_title"/>
-    </LinearLayout>
-
-    <LinearLayout
+        style="@style/FormItemStyle"
+        app:title_text="@string/new_event_name_title"
+        app:content_hint="@string/new_event_name_title" />
+    <com.oidiotlin.classmanager.view.FormItem
         android:id="@+id/new_event_place"
-        style="@style/NewEventFormItemStyle">
-        <TextView
-            android:id="@+id/new_event_place_title"
-            style="@style/NewEventFormTitleStyle"
-            android:visibility="invisible"
-            android:text="@string/new_event_place_title"/>
-        <EditText
-            android:id="@+id/new_event_place_content"
-            style="@style/NewEventFormContentStyle"
-            android:hint="@string/new_event_place_title"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/new_event_date"
-        style="@style/NewEventFormItemStyle">
-        <TextView
-            android:id="@+id/new_event_date_title"
-            style="@style/NewEventFormTitleStyle"
-            android:visibility="invisible"
-            android:text="@string/new_event_date_title"/>
-        <EditText
-            android:id="@+id/new_event_date_content"
-            style="@style/NewEventFormContentStyle"
-            android:hint="@string/new_event_date_title"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/new_event_time"
-        style="@style/NewEventFormItemStyle">
-        <TextView
-            android:id="@+id/new_event_time_title"
-            style="@style/NewEventFormTitleStyle"
-            android:visibility="invisible"
-            android:text="@string/new_event_time_title"/>
-        <EditText
-            android:id="@+id/new_event_time_content"
-            style="@style/NewEventFormContentStyle"
-            android:hint="@string/new_event_time_title"/>
-    </LinearLayout>
-
-    <LinearLayout
+        style="@style/FormItemStyle"
+        app:title_text="@string/new_event_place_title"
+        app:content_hint="@string/new_event_place_title" />
+    <com.oidiotlin.classmanager.view.FormItem
         android:id="@+id/new_event_participation"
-        style="@style/NewEventFormItemStyle">
-        <TextView
-            android:id="@+id/new_event_participation_title"
-            style="@style/NewEventFormTitleStyle"
-            android:visibility="invisible"
-            android:text="@string/new_event_participation_title"/>
-        <EditText
-            android:id="@+id/new_event_participation_content"
-            style="@style/NewEventFormContentStyle"
-            android:hint="@string/new_event_participation_title"
-            android:inputType="numberDecimal"/>
-    </LinearLayout>
-
+        style="@style/FormItemStyle"
+        app:title_text="@string/new_event_participation_title"
+        app:content_hint="@string/new_event_participation_title" />
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider_line_horizontal"
+        android:showDividers="beginning"
+        android:orientation="horizontal">
+        <com.oidiotlin.classmanager.view.FormItem
+            android:id="@+id/new_event_date"
+            style="@style/FormItemStyle"
+            app:title_text="@string/new_event_date_title"
+            app:content_hint="@string/new_event_date_title" />
+        <com.oidiotlin.classmanager.view.FormItem
+            android:id="@+id/new_event_time"
+            style="@style/FormItemStyle"
+            app:title_text="@string/new_event_time_title"
+            app:content_hint="@string/new_event_time_title" />
+    </LinearLayout>
+    <com.oidiotlin.classmanager.view.FormItem
         android:id="@+id/new_event_content"
-        style="@style/NewEventFormItemStyle">
-        <TextView
-            android:id="@+id/new_event_content_title"
-            style="@style/NewEventFormTitleStyle"
-            android:visibility="invisible"
-            android:text="@string/new_event_content_title"/>
-        <EditText
-            android:id="@+id/new_event_content_content"
-            style="@style/NewEventFormContentStyle"
-            android:hint="@string/new_event_content_title"
-            android:inputType="textMultiLine"/>
+        style="@style/FormItemStyle"
+        app:title_text="@string/new_event_content_title"
+        app:content_hint="@string/new_event_content_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+        <ImageButton
+            android:id="@+id/new_event_cancel"
+            style="@style/NewEventButtonStyle"
+            android:src="@drawable/ic_close" />
+        <ImageButton
+            android:id="@+id/new_event_confirm"
+            style="@style/NewEventButtonStyle"
+            android:src="@drawable/ic_launch_1" />
     </LinearLayout>
 
-    <!-- functions -->
-    
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="end"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:id="@+id/event_button_confirm"
-            android:layout_height="60dp"
-            android:layout_width="60dp"
-            android:scaleType="fitXY"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_launch_1"/>
-    </LinearLayout>
 </LinearLayout>

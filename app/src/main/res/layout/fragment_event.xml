@@ -5,13 +5,15 @@
     android:background="@color/bg_event_fragment">
 
     <!-- 新建活动 -->
-    <LinearLayout
+    <com.oidiotlin.classmanager.view.NewEvent
         android:id="@+id/create_event"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
 
-    </LinearLayout>
+    </com.oidiotlin.classmanager.view.NewEvent>
 
     <!-- 历史活动 -->
     <ListView
