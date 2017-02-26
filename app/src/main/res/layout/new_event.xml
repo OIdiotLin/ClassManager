@@ -31,19 +31,22 @@
         app:title_text="@string/new_event_participation_title"
         app:content_hint="@string/new_event_participation_title" />
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@drawable/divider_line_horizontal"
-        android:showDividers="beginning"
+        android:divider="@drawable/divider_line_vertical"
+        android:showDividers="middle"
+        android:dividerPadding="2dp"
         android:orientation="horizontal">
         <com.oidiotlin.classmanager.view.FormItem
             android:id="@+id/new_event_date"
             style="@style/FormItemStyle"
+            android:layout_weight="1.0"
             app:title_text="@string/new_event_date_title"
             app:content_hint="@string/new_event_date_title" />
         <com.oidiotlin.classmanager.view.FormItem
             android:id="@+id/new_event_time"
             style="@style/FormItemStyle"
+            android:layout_weight="1.0"
             app:title_text="@string/new_event_time_title"
             app:content_hint="@string/new_event_time_title" />
     </LinearLayout>
@@ -58,14 +61,26 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end">
-        <ImageButton
-            android:id="@+id/new_event_cancel"
-            style="@style/NewEventButtonStyle"
-            android:src="@drawable/ic_close" />
-        <ImageButton
-            android:id="@+id/new_event_confirm"
-            style="@style/NewEventButtonStyle"
-            android:src="@drawable/ic_launch_1" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1.0">
+            <ImageButton
+                android:id="@+id/new_event_cancel"
+                style="@style/NewEventButtonStyle"
+                android:src="@drawable/ic_close" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1.0">
+            <ImageButton
+                android:id="@+id/new_event_confirm"
+                style="@style/NewEventButtonStyle"
+                android:src="@drawable/ic_launch_1" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
