@@ -7,7 +7,7 @@
     android:descendantFocusability="blocksDescendants">
 
     <ImageView
-        android:id="@+id/item_gender"
+        android:id="@+id/person_gender"
         android:layout_width="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
@@ -15,13 +15,14 @@
         android:layout_height="30dp"
         android:src="@drawable/ic_male"/>
     <TextView
-        android:id="@+id/item_name"
+        android:id="@+id/person_name"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:textSize="30sp"
         android:textColor="@color/text_listItem"
         android:text="@string/undefined"
         android:background="@color/transparent"
+        android:onClick="showDetails"
         android:textAlignment="center"/>
 
     <!-- DETAILS HERE -->
@@ -44,27 +45,27 @@
                 android:src="@drawable/ic_score"/>
             <TextView
                 android:layout_toEndOf="@id/item_participation_ic"
-                android:id="@+id/item_participation_text"
+                android:id="@+id/person_participation_text"
                 style="@style/ItemDetailsTextStyle"/>
 
             <ImageView
-                android:layout_toEndOf="@id/item_participation_text"
+                android:layout_toEndOf="@id/person_participation_text"
                 android:id="@+id/item_dormitory_ic"
                 style="@style/ItemDetailsIconStyle"
                 android:src="@drawable/ic_dormitory"/>
             <TextView
                 android:layout_toEndOf="@id/item_dormitory_ic"
-                android:id="@+id/item_dormitory_text"
+                android:id="@+id/person_dormitory_text"
                 style="@style/ItemDetailsTextStyle"/>
 
             <ImageView
-                android:layout_toEndOf="@id/item_dormitory_text"
+                android:layout_toEndOf="@id/person_dormitory_text"
                 android:id="@+id/item_native_province_ic"
                 style="@style/ItemDetailsIconStyle"
                 android:src="@drawable/ic_home"/>
             <TextView
                 android:layout_toEndOf="@id/item_native_province_ic"
-                android:id="@+id/item_native_province_text"
+                android:id="@+id/person_native_province_text"
                 style="@style/ItemDetailsTextStyle"/>
         </RelativeLayout>
 
@@ -78,33 +79,33 @@
                 android:src="@drawable/ic_date"/>
             <TextView
                 android:layout_toEndOf="@id/item_birthday_ic"
-                android:id="@+id/item_birthday_text"
+                android:id="@+id/person_birthday_text"
                 style="@style/ItemDetailsTextStyle"/>
 
             <ImageView
-                android:layout_toEndOf="@id/item_birthday_text"
+                android:layout_toEndOf="@id/person_birthday_text"
                 android:id="@+id/item_phone_number_ic"
                 style="@style/ItemDetailsIconStyle"
                 android:src="@drawable/ic_phone"/>
             <TextView
                 android:layout_toEndOf="@id/item_phone_number_ic"
-                android:id="@+id/item_phone_number_text"
+                android:id="@+id/person_phone_number_text"
                 style="@style/ItemDetailsTextStyle"
                 android:layout_marginEnd="5dp"/>
 
             <ImageView
-                android:layout_toEndOf="@id/item_phone_number_text"
+                android:layout_toEndOf="@id/person_phone_number_text"
                 android:id="@+id/btn_divider"
                 android:layout_width="1dp"
                 android:layout_height="20dp"
                 android:src="@color/list_divider"/>
             <ImageButton
+                android:id="@+id/person_call"
                 android:layout_toEndOf="@id/btn_divider"
                 android:layout_marginStart="5dp"
                 style="@style/ItemDetailsIconStyle"
                 android:src="@drawable/ic_phonecall"
-                android:background="@color/transparent"
-                android:onClick="callButtonOnClick"/>
+                android:background="@color/transparent"/>
         </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>

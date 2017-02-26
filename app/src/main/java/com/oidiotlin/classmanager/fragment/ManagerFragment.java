@@ -1,9 +1,11 @@
 package com.oidiotlin.classmanager.fragment;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +28,7 @@ import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
  * Project: ClassManager
  */
 
-public class ManagerFragment extends ListFragment {
+public class ManagerFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "ManagerFragment";
     private ListView listView;
     private List<Person> persons;
@@ -50,37 +52,16 @@ public class ManagerFragment extends ListFragment {
         super.onCreate(savedInstanceState);
     }
 
-    /**
-     * Change the visibility of details by clicking the item
-     * @param l The ListView where the click happened
-     * @param v The view that was clicked within the ListView
-     * @param position The position of the view in the list
-     * @param id The row id of the item that was clicked
-     */
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        //final View details = l.getChildAt(position);
-        final View details = v.findViewById(R.id.item_details);
-        //Log.i(TAG, "onListItemClick: name = " + ((TextView)((View)details.getParent()).findViewById(R.id.item_name)).getText());
-        int currentHeight = details.getHeight();
-        ValueAnimator anim;
-        if (currentHeight == Constant.DETAILS_HEIGHT) {
-            anim = ValueAnimator.ofInt(Constant.DETAILS_HEIGHT, 0);
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.person_name:
+                toggleDetails(v);
+                break;
+            case R.id.person_call:
+                callButtonOnClick(v);
+                break;
         }
-        else if (currentHeight == 0) {
-            anim = ValueAnimator.ofInt(0, Constant.DETAILS_HEIGHT);
-        }
-        else return;
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                details.getLayoutParams().height = (int) animation.getAnimatedValue();
-                details.requestLayout();
-            }
-        });
-        anim.setDuration(Constant.DETAILS_ANIM_DURATION);
-        anim.start();
-        super.onListItemClick(l, v, position, id);
     }
 
     public class MyAdapter extends BaseAdapter {
@@ -100,13 +81,13 @@ public class ManagerFragment extends ListFragment {
             /**
              * Access the Views
              */
-            TextView name = (TextView) v.findViewById(R.id.item_name);
-            ImageView gender = (ImageView) v.findViewById(R.id.item_gender);
-            TextView phoneNumber = (TextView) v.findViewById(R.id.item_phone_number_text);
-            TextView dormitory = (TextView) v.findViewById(R.id.item_dormitory_text);
-            TextView nativeProvince = (TextView) v.findViewById(R.id.item_native_province_text);
-            TextView birthday = (TextView) v.findViewById(R.id.item_birthday_text);
-            TextView participation = (TextView) v.findViewById(R.id.item_participation_text);
+            TextView name = (TextView) v.findViewById(R.id.person_name);
+            ImageView gender = (ImageView) v.findViewById(R.id.person_gender);
+            TextView phoneNumber = (TextView) v.findViewById(R.id.person_phone_number_text);
+            TextView dormitory = (TextView) v.findViewById(R.id.person_dormitory_text);
+            TextView nativeProvince = (TextView) v.findViewById(R.id.person_native_province_text);
+            TextView birthday = (TextView) v.findViewById(R.id.person_birthday_text);
+            TextView participation = (TextView) v.findViewById(R.id.person_participation_text);
             /**
              * Fill the View
              */
@@ -137,5 +118,45 @@ public class ManagerFragment extends ListFragment {
         public int getCount() {
             return persons.size();
         }
+    }
+
+    public void toggleDetails(View v) {
+        final View details = ((View) v.getParent()).findViewById(R.id.item_details);
+        //Log.i(TAG, "onListItemClick: name = " + ((TextView)((View)details.getParent()).findViewById(R.id.item_name)).getText());
+        int currentHeight = details.getHeight();
+        ValueAnimator anim;
+        if (currentHeight == Constant.DETAILS_HEIGHT) {
+            anim = ValueAnimator.ofInt(Constant.DETAILS_HEIGHT, 0);
+        }
+        else if (currentHeight == 0) {
+            anim = ValueAnimator.ofInt(0, Constant.DETAILS_HEIGHT);
+        }
+        else return;
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                details.getLayoutParams().height = (int) animation.getAnimatedValue();
+                details.requestLayout();
+            }
+        });
+        anim.setDuration(Constant.DETAILS_ANIM_DURATION);
+        anim.start();
+    }
+
+    /**
+     * Show phone number in dial activity after click call button in item details
+     * @param view the button clicked
+     */
+    public void callButtonOnClick(View view) {
+        View parentView = (View) view.getParent();
+        TextView phoneNumberView = (TextView) parentView.findViewById(R.id.person_phone_number_text);
+        String number = (String) phoneNumberView.getText();
+        Log.i(TAG, "callButtonOnClick: " + number);
+        call(number);
+    }
+    private void call (String number) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

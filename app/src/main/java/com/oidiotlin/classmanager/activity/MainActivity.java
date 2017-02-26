@@ -3,9 +3,9 @@ package com.oidiotlin.classmanager.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oidiotlin.classmanager.R;
-import com.oidiotlin.classmanager.fragment.ManagerFragment;
 import com.oidiotlin.classmanager.fragment.EventFragment;
+import com.oidiotlin.classmanager.fragment.ManagerFragment;
 
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
 
@@ -53,7 +53,7 @@ public class MainActivity extends FragmentActivity {
         managerButton.setOnClickListener(new ToolBarButtonClickListener());
         randPickButton.setOnClickListener(new ToolBarButtonClickListener());
 
-        ListFragment fragment = new ManagerFragment();
+        Fragment fragment = new ManagerFragment();
         bundle = new Bundle();
         bundle.putSerializable(XML_NODE_PERSON,
                 getIntent().getSerializableExtra(XML_NODE_PERSON));
@@ -64,7 +64,7 @@ public class MainActivity extends FragmentActivity {
     public class ToolBarButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            ListFragment fragment;
+            Fragment fragment;
             switch (view.getId()) {
                 /**
                  * tool buttons listener
@@ -105,7 +105,7 @@ public class MainActivity extends FragmentActivity {
      * @param myFrag 目标 Fragment
      * @param newTitle 切换后的新 Title
      */
-    private void switchFragment (ListFragment myFrag, int newTitle) {
+    private void switchFragment (Fragment myFrag, int newTitle) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ((TextView)findViewById(R.id.toolbar_title)).setText(newTitle);
         ft.replace(R.id.frame_content, myFrag);
@@ -113,20 +113,4 @@ public class MainActivity extends FragmentActivity {
         drawerLayout.closeDrawer(menuLayout);
     }
 
-    /**
-     * Show phone number in dial activity after click call button in item details
-     * @param view the button clicked
-     */
-    public void callButtonOnClick(View view) {
-        View parentView = (View) view.getParent();
-        TextView phoneNumberView = (TextView) parentView.findViewById(R.id.item_phone_number_text);
-        String number = (String) phoneNumberView.getText();
-        Log.i(TAG, "callButtonOnClick: " + number);
-        call(number);
-    }
-    private void call (String number) {
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
 }
