@@ -2,7 +2,7 @@ package com.oidiotlin.classmanager.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,7 @@ import java.util.List;
  * Project: ClassManager
  */
 
-public class EventFragment extends ListFragment {
+public class EventFragment extends Fragment {
 
     private static final String TAG = "EventFragment";
     private ListView listView;
@@ -32,10 +32,13 @@ public class EventFragment extends ListFragment {
         View view = inflater.inflate(R.layout.fragment_event, null);
         Log.i(TAG, "onCreateView: ");
         listView = (ListView) view.findViewById(R.id.events_list);
+
+        listView.setAdapter(new EventAdapter());
+
         return view;
     }
 
-    public class MyAdapter extends BaseAdapter {
+    public class EventAdapter extends BaseAdapter {
         @Override
         public long getItemId(int position) {
             return 0;
