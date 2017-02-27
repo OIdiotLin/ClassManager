@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,7 +29,7 @@ import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
  * Project: ClassManager
  */
 
-public class ManagerFragment extends Fragment implements View.OnClickListener {
+public class ManagerFragment extends Fragment {
     public static final String TAG = "ManagerFragment";
     private ListView listView;
     private List<Person> persons;
@@ -38,10 +39,9 @@ public class ManagerFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_manager, null);
         Log.i(TAG, "onCreateView: ");
-        listView = (ListView) view.findViewById(android.R.id.list);
+        listView = (ListView) view.findViewById(R.id.person_list);
 
         persons = (List<Person>)(getArguments().getSerializable(XML_NODE_PERSON));
-        Log.i(TAG, "onCreateView: ManagerFragment: " + persons.toString());
 
         listView.setAdapter(new MyAdapter());
         return view;
@@ -50,18 +50,6 @@ public class ManagerFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.person_name:
-                toggleDetails(v);
-                break;
-            case R.id.person_call:
-                callButtonOnClick(v);
-                break;
-        }
     }
 
     public class MyAdapter extends BaseAdapter {
@@ -106,6 +94,27 @@ public class ManagerFragment extends Fragment implements View.OnClickListener {
             if(person.getBirthday() != null)
                 birthday.setText(person.getBirthday().substring(5));    // ignore year
             participation.setText(String.valueOf(person.getParticipation()));
+
+            /**
+             * 点击名字时，切换 details 可见性
+             */
+            name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toggleDetails(v);
+                }
+            });
+
+            /**
+             * 点击拨号按钮时，拨出电话
+             */
+            ImageButton phoneCall = (ImageButton) v.findViewById(R.id.person_call);
+            phoneCall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callButtonOnClick(v);
+                }
+            });
             return v;
         }
 
@@ -121,7 +130,7 @@ public class ManagerFragment extends Fragment implements View.OnClickListener {
     }
 
     public void toggleDetails(View v) {
-        final View details = ((View) v.getParent()).findViewById(R.id.item_details);
+        final View details = ((View)v.getParent()).findViewById(R.id.person_details);
         //Log.i(TAG, "onListItemClick: name = " + ((TextView)((View)details.getParent()).findViewById(R.id.item_name)).getText());
         int currentHeight = details.getHeight();
         ValueAnimator anim;
