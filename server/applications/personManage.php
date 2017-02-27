@@ -27,10 +27,19 @@ function getPersonList() {
  * 
  */
 function addParticipation(&$personIdList, $deltaParticipation) {
-	foreach ($id as $key => $value) {
-		# code...
+	$db_handler = mysql_connect(DB_HOST, DB_USER, DB_PWD);
+	mysql_select_db(DB_NAME);
+
+	foreach ($personIdList as $value) {
+		$originalParticipation = mysql_query("SELECT ".TBL_PERSON_PARTICIPATION.
+		                                      " FROM ".TBL_PERSONS.
+		                                      " WHERE ".TBL_PERSON_ID."=$value");
+		$newParticipation = $originalParticipation + $deltaParticipation;
+		mysql_query("UPDATE ".TBL_PERSONS.
+		            " SET ".TBL_PERSON_PARTICIPATION."=$newParticipation".
+		            " WHERE ".TBL_PERSON_ID."=$value");
 	}
-	
+	mysql_close($db_handler);
 }
 
 ?>
