@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_person"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,12 +23,11 @@
         android:textColor="@color/text_listItem"
         android:text="@string/undefined"
         android:background="@color/transparent"
-        android:onClick="showDetails"
         android:textAlignment="center"/>
 
     <!-- DETAILS HERE -->
     <RelativeLayout
-        android:id="@+id/item_details"
+        android:id="@+id/person_details"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="visible"
