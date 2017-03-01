@@ -5,11 +5,15 @@ import android.content.res.TypedArray;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.oidiotlin.classmanager.R;
+
+import static com.oidiotlin.classmanager.activity.MainActivity.TAG;
 
 /**
  * Created by OIdiot on 2017/2/24.
@@ -73,6 +77,12 @@ public class FormItem extends LinearLayout implements TextWatcher {
         content.setHint(contentHint);
         content.setTextSize(contentTextSize);
         content.setBackground(null);
+        content.setOnFocusChangeListener(new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.i(TAG, "onFocusChange: " + hasFocus);
+            }
+        });
 
         this.setBackgroundColor(background);
         this.setPadding(0,0,0,0);

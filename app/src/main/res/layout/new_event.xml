@@ -4,84 +4,93 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:divider="@drawable/divider_line_horizontal"
-    android:showDividers="middle"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
     android:descendantFocusability="blocksDescendants">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/new_event_title"
         style="@style/FormTitleStyle"
         android:text="@string/new_event"/>
 
-    <com.oidiotlin.classmanager.view.FormItem
-        android:id="@+id/new_event_name"
-        style="@style/FormItemStyle"
-        app:title_text="@string/new_event_name_title"
-        app:content_hint="@string/new_event_name_title" />
-    <com.oidiotlin.classmanager.view.FormItem
-        android:id="@+id/new_event_place"
-        style="@style/FormItemStyle"
-        app:title_text="@string/new_event_place_title"
-        app:content_hint="@string/new_event_place_title" />
-    <com.oidiotlin.classmanager.view.FormItem
-        android:id="@+id/new_event_participation"
-        style="@style/FormItemStyle"
-        app:title_text="@string/new_event_participation_title"
-        app:content_hint="@string/new_event_participation_title" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@drawable/divider_line_vertical"
-        android:showDividers="middle"
-        android:dividerPadding="2dp"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:divider="@drawable/divider_line_horizontal"
+        android:showDividers="middle">
         <com.oidiotlin.classmanager.view.FormItem
-            android:id="@+id/new_event_date"
+            android:id="@+id/new_event_name"
             style="@style/FormItemStyle"
-            android:layout_weight="1.0"
-            app:title_text="@string/new_event_date_title"
-            app:content_hint="@string/new_event_date_title" />
+            app:title_text="@string/new_event_name_title"
+            app:content_hint="@string/new_event_name_title" />
         <com.oidiotlin.classmanager.view.FormItem
-            android:id="@+id/new_event_time"
+            android:id="@+id/new_event_place"
             style="@style/FormItemStyle"
-            android:layout_weight="1.0"
-            app:title_text="@string/new_event_time_title"
-            app:content_hint="@string/new_event_time_title" />
-    </LinearLayout>
-    <com.oidiotlin.classmanager.view.FormItem
-        android:id="@+id/new_event_content"
-        style="@style/FormItemStyle"
-        app:title_text="@string/new_event_content_title"
-        app:content_hint="@string/new_event_content_title" />
-
-    <LinearLayout
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            app:title_text="@string/new_event_place_title"
+            app:content_hint="@string/new_event_place_title" />
+        <com.oidiotlin.classmanager.view.FormItem
+            android:id="@+id/new_event_participation"
+            style="@style/FormItemStyle"
+            app:title_text="@string/new_event_participation_title"
+            app:content_hint="@string/new_event_participation_title" />
         <LinearLayout
-            android:id="@+id/button_cancel"
-            style="@style/NewEventButtonStyle"
-            android:background="@drawable/bg_button_transparent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/button_cancel"
-                android:textColor="@color/cancel_red"
-                android:textSize="16sp"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_line_vertical"
+            android:showDividers="middle"
+            android:dividerPadding="2dp"
+            android:orientation="horizontal">
+            <com.oidiotlin.classmanager.view.FormItem
+                android:id="@+id/new_event_date"
+                style="@style/FormItemStyle"
+                android:layout_weight="1.0"
+                app:title_text="@string/new_event_date_title"
+                app:content_hint="@string/new_event_date_title" />
+            <com.oidiotlin.classmanager.view.FormItem
+                android:id="@+id/new_event_time"
+                style="@style/FormItemStyle"
+                android:layout_weight="1.0"
+                app:title_text="@string/new_event_time_title"
+                app:content_hint="@string/new_event_time_title" />
         </LinearLayout>
+        <com.oidiotlin.classmanager.view.FormItem
+            android:id="@+id/new_event_content"
+            style="@style/FormItemStyle"
+            app:title_text="@string/new_event_content_title"
+            app:content_hint="@string/new_event_content_title" />
+
         <LinearLayout
-            android:id="@+id/button_confirm"
-            style="@style/NewEventButtonStyle"
-            android:background="@drawable/bg_button_transparent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/button_confirm"
-                android:textColor="@color/confirm_green"
-                android:textSize="16sp"/>
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/button_cancel"
+                style="@style/NewEventButtonStyle"
+                android:background="@drawable/bg_button_transparent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_cancel"
+                    android:textColor="@color/cancel_red"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/button_confirm"
+                style="@style/NewEventButtonStyle"
+                android:background="@drawable/bg_button_transparent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_confirm"
+                    android:textColor="@color/confirm_green"
+                    android:textSize="16sp"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

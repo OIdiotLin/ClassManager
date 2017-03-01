@@ -115,6 +115,7 @@
         <item name="title_visible">false</item>
         <item name="content_text_color">@color/title</item>
         <item name="content_text_size">8sp</item>"
+        <item name="android:descendantFocusability">blocksDescendants</item>
     </style>
 
     <style name="NewEventButtonStyle">
