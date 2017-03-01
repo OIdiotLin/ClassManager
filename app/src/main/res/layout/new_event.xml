@@ -64,18 +64,18 @@
         <LinearLayout
             android:id="@+id/button_cancel"
             style="@style/NewEventButtonStyle"
-            android:background="@drawable/bg_button">
+            android:background="@drawable/bg_button_transparent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/button_cancel"
-                android:textColor="@color/shadow1"
+                android:textColor="@color/cancel_red"
                 android:textSize="16sp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/button_confirm"
             style="@style/NewEventButtonStyle"
-            android:background="@drawable/bg_button">
+            android:background="@drawable/bg_button_transparent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

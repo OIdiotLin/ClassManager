@@ -20,5 +20,6 @@
     <color name="shadow1">#7c192429</color>
 
     <color name="new_event_form_title">#0379FF</color>
+    <color name="cancel_red">#681011</color>
     <color name="confirm_green">#39612b</color>
 </resources>
