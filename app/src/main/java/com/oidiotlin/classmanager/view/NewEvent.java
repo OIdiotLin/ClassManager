@@ -25,6 +25,7 @@ public class NewEvent extends LinearLayout {
     private FormItem time;
     private FormItem content;
 
+
     public NewEvent(Context context) {
         this(context, null);
     }

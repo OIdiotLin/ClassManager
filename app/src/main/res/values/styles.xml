@@ -111,18 +111,22 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/transparent</item>
         <item name="title_text_color">@color/new_event_form_title</item>
-        <item name="title_text_size">7sp</item>
+        <item name="title_text_size">5sp</item>
         <item name="title_visible">false</item>
         <item name="content_text_color">@color/title</item>
-        <item name="content_text_size">10sp</item>"
+        <item name="content_text_size">8sp</item>"
     </style>
 
     <style name="NewEventButtonStyle">
-        <item name="android:layout_width">40dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_gravity">end</item>
-        <item name="android:scaleType">fitXY</item>
-        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1.0</item>
     </style>
 
 </resources>

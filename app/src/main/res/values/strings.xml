@@ -24,4 +24,7 @@
     <string name="new_event_time_title">开始时间</string>
     <string name="new_event_content_title">内容</string>
     <string name="new_event_participation_title">参与分</string>
+
+    <string name="button_confirm">确认</string>
+    <string name="button_cancel">取消</string>
 </resources>

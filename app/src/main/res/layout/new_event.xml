@@ -57,29 +57,31 @@
         app:content_hint="@string/new_event_content_title" />
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1.0">
-            <ImageButton
-                android:id="@+id/new_event_cancel"
-                style="@style/NewEventButtonStyle"
-                android:src="@drawable/ic_close" />
+            android:id="@+id/button_cancel"
+            style="@style/NewEventButtonStyle"
+            android:background="@drawable/bg_button">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_cancel"
+                android:textColor="@color/shadow1"
+                android:textSize="18sp"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1.0">
-            <ImageButton
-                android:id="@+id/new_event_confirm"
-                style="@style/NewEventButtonStyle"
-                android:src="@drawable/ic_launch_1" />
+            android:id="@+id/button_confirm"
+            style="@style/NewEventButtonStyle"
+            android:background="@drawable/bg_button">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_confirm"
+                android:textColor="@color/shadow1"
+                android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>
 
