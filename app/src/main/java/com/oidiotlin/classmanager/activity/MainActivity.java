@@ -1,7 +1,5 @@
 package com.oidiotlin.classmanager.activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -42,7 +40,7 @@ public class MainActivity extends FragmentActivity {
         helpButton = (ImageButton) findViewById(R.id.toolbar_right_btn);
         closeButton = (ImageButton) findViewById(R.id.menu_button_close);
         managerButton = (ImageButton) findViewById(R.id.menu_button_manager);
-        randPickButton = (ImageButton) findViewById(R.id.menu_button_randpick);
+        randPickButton = (ImageButton) findViewById(R.id.menu_button_event);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         menuLayout = (RelativeLayout) findViewById(R.id.menu_layout);
@@ -90,7 +88,7 @@ public class MainActivity extends FragmentActivity {
                     fragment.setArguments(bundle);
                     switchFragment(fragment, R.string.title_fragment_manager);
                     break;
-                case R.id.menu_button_randpick:
+                case R.id.menu_button_event:
                     Log.i("ButtonListener", "onClick: rand pick button.");
                     fragment = new EventFragment();
                     switchFragment(fragment, R.string.title_fragment_event);

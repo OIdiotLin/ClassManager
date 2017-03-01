@@ -34,9 +34,9 @@
             android:background="@color/bg_manager_fragment"/>
         <ImageButton
             android:layout_below="@id/menu_button_manager"
-            android:id="@+id/menu_button_randpick"
+            android:id="@+id/menu_button_event"
             style="@style/MenuContentButtonStyle"
-            android:src="@drawable/ic_randpick"
+            android:src="@drawable/ic_event"
             android:background="@color/bg_event_fragment"/>
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
