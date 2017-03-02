@@ -3,6 +3,7 @@ package com.oidiotlin.classmanager.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -69,14 +70,18 @@ public class FormItem extends LinearLayout implements TextWatcher {
         /**
          * 加载属性
          */
-        title.setVisibility(isTitleVisible ? VISIBLE : INVISIBLE);
+        title.setAlpha(isTitleVisible ? 1 : 0);
         title.setTextSize(titleTextSize);
         title.setTextColor(titleTextColor);
         title.setText(titleText);
 
         content.setHint(contentHint);
+        content.setFocusable(true);
+        content.setInputType(InputType.TYPE_CLASS_TEXT);
+        content.setFocusableInTouchMode(true);
         content.setTextSize(contentTextSize);
         content.setBackground(null);
+        content.setFocusableInTouchMode(true);
         content.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -113,11 +118,18 @@ public class FormItem extends LinearLayout implements TextWatcher {
 
     }
 
-    public void titleFadeIn() {
+    private void titleFadeIn() {
         title.animate().alpha(1f).setDuration(500).start();
     }
 
     private void titleFadeOut() {
         title.animate().alpha(0f).setDuration(500).start();
+    }
+
+    private void titleToggle() {
+        if (title.getAlpha() == 1)
+            titleFadeOut();
+        else
+            titleFadeIn();
     }
 }
