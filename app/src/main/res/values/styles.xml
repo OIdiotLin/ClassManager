@@ -110,7 +110,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/transparent</item>
-        <item name="title_text_color">@color/new_event_form_title</item>
+        <item name="title_text_color">@color/form_item_title_color</item>
         <item name="title_text_size">5sp</item>
         <item name="title_visible">false</item>
         <item name="content_text_color">@color/title</item>
