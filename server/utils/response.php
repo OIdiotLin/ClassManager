@@ -16,6 +16,8 @@ class Response {
 			'message' => $message,
 			'data' => $data
 		);
+
+		header("Content-Type:application/json; charset=UTF-8");
 		echo json_encode($result);
 	}
 
