@@ -4,8 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_card"
-    android:descendantFocusability="blocksDescendants">
+    android:background="@drawable/bg_card">
 
     <ImageView
         android:id="@+id/person_gender"

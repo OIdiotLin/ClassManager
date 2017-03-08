@@ -87,6 +87,16 @@ public class FormItem extends LinearLayout implements TextWatcher {
                 Log.i(TAG, "onFocusChange: " + hasFocus);
             }
         });
+        content.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "onClick: formItem = " + contentHint);
+                content.setFocusable(true);
+                content.setFocusableInTouchMode(true);
+                content.requestFocus();
+                content.requestFocusFromTouch();
+            }
+        });
 
         this.setBackgroundColor(background);
         this.setPadding(0,0,0,0);
@@ -94,6 +104,8 @@ public class FormItem extends LinearLayout implements TextWatcher {
         addView(title, titleParams);
         contentParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         addView(content, contentParams);
+
+        content.requestFocus();
     }
 
     @Override
