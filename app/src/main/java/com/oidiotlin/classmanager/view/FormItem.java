@@ -81,7 +81,6 @@ public class FormItem extends LinearLayout implements TextWatcher {
         content.setFocusableInTouchMode(true);
         content.setTextSize(contentTextSize);
         content.setBackground(null);
-        content.setFocusableInTouchMode(true);
         content.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
