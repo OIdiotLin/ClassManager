@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
+    android:background="@drawable/bg_card"
     android:descendantFocusability="blocksDescendants">
 
     <TextView
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="15dp"
         android:divider="@drawable/divider_line_horizontal"
         android:showDividers="middle">
         <com.oidiotlin.classmanager.view.FormItem

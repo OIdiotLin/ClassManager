@@ -61,6 +61,9 @@ public class NewEvent extends LinearLayout {
         cancelButton = view.findViewById(R.id.button_cancel);
         confirmButton = view.findViewById(R.id.button_confirm);
 
+        /**
+         * 获取目标表单高度
+         */
         int height = makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         int width = makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         form.measure(width, height);
