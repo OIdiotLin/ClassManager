@@ -13,6 +13,7 @@ public class Event {
     private String place;   // 活动地点
     private String content; // 活动内容
     private int participation;  // 活动参与分
+    private int[] participator; // 活动参与人编号
 
     public String getContent() {
         return content;
@@ -44,6 +45,14 @@ public class Event {
 
     public void setParticipation(int participation) {
         this.participation = participation;
+    }
+
+    public int[] getParticipator() {
+        return participator;
+    }
+
+    public void setParticipator(int[] participator) {
+        this.participator = participator;
     }
 
     public String getPlace() {
