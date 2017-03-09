@@ -75,7 +75,7 @@
             <ImageView
                 android:id="@+id/item_birthday_ic"
                 style="@style/ItemDetailsIconStyle"
-                android:src="@drawable/ic_date"/>
+                android:src="@drawable/ic_cake"/>
             <TextView
                 android:layout_toEndOf="@id/item_birthday_ic"
                 android:id="@+id/person_birthday_text"

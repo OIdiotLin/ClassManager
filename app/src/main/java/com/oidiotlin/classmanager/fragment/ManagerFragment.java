@@ -99,13 +99,16 @@ public class ManagerFragment extends Fragment {
             participation.setText(String.valueOf(person.getParticipation()));
 
             /**
-             * 生日检查
+             * 生日检查 —— 更替 title img
              */
             Calendar calendar = Calendar.getInstance();
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
             int p_month = Integer.parseInt(person.getBirthday().substring(5,7));
             int p_day = Integer.parseInt(person.getBirthday().substring(8,10));
+            if (month == p_month && day == p_day) {
+                gender.setImageResource(R.drawable.ic_birthday_hat);
+            }
 
             /**
              * 获取目标高度
