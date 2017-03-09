@@ -10,24 +10,35 @@ function business($act) {
 		case API_CHECK_UPDATE:
 			askUpdate();
 			break;
+
 		/**
 		 * @return url of new apk for updating
 		 */
 		case API_GET_APK_URL:
 			getApkUrl();
 			break;
+
 		/**
 		 * @return list of persons
 		 */
 		case API_GET_PERSON_LIST:
 			getPersonList();	
 			break;
+
+		/**
+		 * @return list of events
+		 */
+		case API_GET_EVENT_LIST:
+			getEventList();
+			break;
+
 		/**
 		 * add event by POST
 		 */
 		case API_ADD_EVENT:
 			addEvent();
 			break;
+			
 		/**
 		 * show index if without any recognized args
 		 */

@@ -1,6 +1,6 @@
 <?php
 
-function getEvent() {
+function getEventList() {
 	$db_handler = mysql_connect(DB_HOST, DB_USER, DB_PWD);
 	$handler = mysql_connect(DB_HOST, DB_USER, DB_PWD);
 	mysql_select_db(DB_NAME);
