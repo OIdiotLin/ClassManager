@@ -20,8 +20,10 @@ import com.oidiotlin.classmanager.R;
 import com.oidiotlin.classmanager.utils.parser.Person;
 import com.oidiotlin.classmanager.utils.system.Constant;
 
+import java.util.Calendar;
 import java.util.List;
 
+import static android.view.View.MeasureSpec.makeMeasureSpec;
 import static com.oidiotlin.classmanager.utils.system.Constant.XML_NODE_PERSON;
 
 /**
@@ -33,6 +35,7 @@ public class ManagerFragment extends Fragment {
     public static final String TAG = "ManagerFragment";
     private ListView listView;
     private List<Person> persons;
+    private static int detailHeight;
 
     @Nullable
     @Override
@@ -96,6 +99,24 @@ public class ManagerFragment extends Fragment {
             participation.setText(String.valueOf(person.getParticipation()));
 
             /**
+             * 生日检查
+             */
+            Calendar calendar = Calendar.getInstance();
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int p_month = Integer.parseInt(person.getBirthday().substring(5,7));
+            int p_day = Integer.parseInt(person.getBirthday().substring(8,10));
+
+            /**
+             * 获取目标高度
+             */
+            View details = v.findViewById(R.id.person_details);
+            int height = makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            int width = makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            details.measure(width, height);
+            detailHeight = details.getMeasuredHeight();
+            details.getLayoutParams().height = 0;
+            /**
              * 点击名字时，切换 details 可见性
              */
             name.setOnClickListener(new View.OnClickListener() {
@@ -134,11 +155,11 @@ public class ManagerFragment extends Fragment {
         //Log.i(TAG, "onListItemClick: name = " + ((TextView)((View)details.getParent()).findViewById(R.id.item_name)).getText());
         int currentHeight = details.getHeight();
         ValueAnimator anim;
-        if (currentHeight == Constant.DETAILS_HEIGHT) {
-            anim = ValueAnimator.ofInt(Constant.DETAILS_HEIGHT, 0);
+        if (currentHeight == detailHeight) {
+            anim = ValueAnimator.ofInt(detailHeight, 0);
         }
         else if (currentHeight == 0) {
-            anim = ValueAnimator.ofInt(0, Constant.DETAILS_HEIGHT);
+            anim = ValueAnimator.ofInt(0, detailHeight);
         }
         else return;
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
