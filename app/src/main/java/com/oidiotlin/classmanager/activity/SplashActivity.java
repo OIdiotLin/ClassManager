@@ -168,30 +168,6 @@ public class SplashActivity extends Activity {
                             /**
                              * Sort persons by alphabetic spelling of names ( Ascending )
                              */
-                            /*
-                            Collections.sort(persons, new Comparator<Person>() {
-                                @Override
-                                public int compare(Person o1, Person o2) {
-                                    if (o1 == null || o2 == null) {
-                                        return 0;
-                                    }
-                                    try{
-                                        byte[] bufA = o1.getPinyin().getBytes();
-                                        byte[] bufB = o2.getPinyin().getBytes();
-                                        int compLength = Math.min(bufA.length, bufB.length);
-                                        for (int i = 0; i < compLength ; i++) {
-                                            if (bufA[i] < bufB[i])
-                                                return -1;
-                                            else if (bufA[i] > bufB[i])
-                                                return 1;
-                                        }
-                                        return bufA.length - bufB.length;
-                                    } catch (Exception e){
-                                        return 0;
-                                    }
-                                }
-                            });
-                            */
                             intent.putExtra(XML_NODE_PERSON, (Serializable) persons);
                             startActivity(intent);
                             finish();
